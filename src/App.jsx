@@ -6,11 +6,8 @@ function App() {
 
   return (
     <>
-      
-      
-      <NavBar />
       <Home />
-      
+      <NavBar />
     </>
   )
 }
