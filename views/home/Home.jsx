@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+
+import UserContext from '../../contexts/User'
 
 import { getAllArticles, getAllUsers, getTopics } from '../../api'
 
 import styles from './Home.module.css'
 
 function Home() {
+    const { loggedInUser } = useContext(UserContext)
 
     const [ orderedArticles , setOrderedArticles ] = useState([])
     const [ topicList, setTopicList ] = useState([])
@@ -50,11 +53,16 @@ function Home() {
 
   return (
     <div className={styles.homeWrapper}>
-        <h1>Artico</h1>
-        <p>Where ideas blossom</p>
-        <h2>Discover</h2>
+        {/* <h1>Artico</h1> */}
+        <div className={styles.titleWrapper}>
+            <h2>Discover</h2>
+            <div className={styles.userWrapper}>
+                <p>{`${loggedInUser.username}`}</p>
+                <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
+            </div>
+        </div>
         <h3>WHAT'S NEW TODAY</h3>
-        <section>
+        <section className={styles.carousel}>
             <ul className={styles.imageCarousel}>
                 {orderedArticles.map((article) => {
                     return (
@@ -73,7 +81,7 @@ function Home() {
             </ul>
         </section>
         <h3>BROWSE TOPICS</h3>
-        <div>
+        <section className={styles.topics}>
             <ul className={styles.topicWrapper}>
                 {topicList.map((topic) => {
                     return (
@@ -83,7 +91,7 @@ function Home() {
                     )
                 })}
             </ul>
-        </div>
+        </section>
     </div>
   )
 }

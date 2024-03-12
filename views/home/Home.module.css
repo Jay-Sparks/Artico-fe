@@ -2,6 +2,28 @@
     margin: 1rem;
 }
 
+.titleWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userWrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8rem;
+}
+
+.userAvatar{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+}
+
+.carousel{
+    margin: 2rem 0;
+}
 
 .imageCarousel{
     list-style-type: none;
@@ -15,36 +37,14 @@
     -webkit-overflow-scrolling: touch;
 }
 
-
 .carouselTile {
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex-shrink: 0;
     scroll-snap-align: start;
-    width: 90vw;
-    margin: 0.2rem 0.5rem;
-    transform-origin: center center;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
-}
-
-.topicWrapper{
-    list-style-type: none;
-    margin-block: 0;
-    margin-inline: 0;
-    padding-inline-start: 0;
-}
-
-.topicTile{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    width: 90vw;
-    margin: 0.2rem 0.5rem;
+    width: 100%;
+    margin: 0 0.5rem;
     transform-origin: center center;
     transform: scale(1);
     transition: transform 0.5s;
@@ -92,6 +92,32 @@
     text-align: center;
 }
 
+.topics{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.topicWrapper{
+    list-style-type: none;
+    margin-block: 0;
+    margin-inline: 0;
+    padding-inline-start: 0;
+}
+
+.topicTile{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    margin: 1.5rem auto;
+}
 
 /* .slides::-webkit-scrollbar {
     width: 10px;
