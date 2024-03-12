@@ -1,0 +1,16 @@
+.navBar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: whitesmoke;
+    height: 4rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -1px 3px grey;
+    z-index: 99;
+}
+
+.link{
+    font-size: 0.75rem;
+}

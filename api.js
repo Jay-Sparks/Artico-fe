@@ -47,3 +47,16 @@ export const getTopics = () => {
             console.log(err);
         })
 }
+
+export const getUserLogin = (userName) => {
+    console.log(userName, "controller");
+    return articoApi
+        .get(`/users/${userName}`)
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            console.log(err.response)
+            return err.response.data
+        })
+}
