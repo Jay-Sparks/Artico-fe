@@ -1,0 +1,77 @@
+.articleWrapper{
+    margin: 2rem 1.5rem 4rem;
+}
+
+.articleTitle{
+    font-size:x-large;
+    margin: 0 0 1rem;
+}
+
+.flexWrapper{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.flexWrapper p{
+    margin: 0 0 1rem;
+}
+
+.articleImg{
+    width: 100%;
+}
+
+.votingWrapper{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.votingWrapper button{
+    background-color: white;
+    color: black;
+    font-size: x-large;
+    font-weight: bold;
+    height: 3.8rem;
+    width: 33%;
+    box-shadow: none;
+    text-align: center;
+    padding: 0;
+    /* position: relative; */
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.commentLogo{
+    width: 2.2rem;
+}
+
+.commentCount{
+    background-color: blueviolet;
+    border-radius: 6rem;
+    width: 1.5rem;
+    height: 1.4rem;
+    line-height: 1.5rem;
+    color: white;
+    font-size: 1rem;
+    /* position: absolute; */
+    z-index: 10;
+    /* top:0;
+    left:0;
+    right:0;
+    bottom:0; */
+}
+
+.downButton{
+    border-right: 0.5px solid grey;
+}
+
+.upButton{
+    border-left: 0.5px solid grey;
+}
+
+.articleBody{
+    line-height: 1.5rem;
+}

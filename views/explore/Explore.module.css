@@ -1,0 +1,129 @@
+.exploreWrapper{
+    margin: 1rem;
+}
+
+
+.titleWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userWrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8rem;
+}
+
+.userAvatar{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+}
+
+.articleWrapper{
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.articleTile{
+    box-shadow: 1px 1px 12px grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem 0;
+    /* border-bottom: 1px solid grey; */
+}
+
+.articleTile h4{
+    font-size: medium;
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    text-align: left;
+    font-weight: bold;
+    /* width: 90vw; */
+    margin: 1rem 1rem 0.5rem 1rem;
+}
+
+.articleTile h5{
+    font-size: small;
+    font-weight: bold;
+    margin: 1rem;
+    text-align: left;
+}
+
+.articleTile img{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.articleTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
+
+.articleInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.date{
+    font-size: smaller;
+    margin: 1rem;
+}
+
+.authorVotes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    margin: 0 0 0.5rem;
+}
+
+.topic{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: smaller;
+    padding: 0.5rem 1rem;
+    background-color: indianred;
+    opacity: 80%;
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+    text-align: left;
+    color: white;
+    font-weight: 800;
+}
+
+.filters{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 0.5rem;
+}
+
+select{
+    height: 2rem;
+    width: 40vw;
+}
+
+option{
+    font-size: 2rem;
+    width: 10rem;
+}
+
