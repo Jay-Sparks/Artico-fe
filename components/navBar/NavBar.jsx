@@ -9,11 +9,20 @@ function NavBar() {
   // const { loggedInUser } = useContext(UserContext)
   return (
     <nav className={styles.navBar}>
-      <Link to="/" className={styles.link}>Home</Link>
-      <Link to="/explore" className={styles.link}>Explore</Link>
-      <Link to="/publish" className={styles.link}>Publish</Link>
-      <Link to="/comments" className={styles.link}>Comments</Link>
-      <Link to="/account" className={styles.link}>Account</Link>
+      <Link to="/" className={styles.link}>
+        <img src="../../assets/Home.svg" />
+      </Link>
+      <Link to="/explore" className={styles.link}>
+        <img src="../../assets/Explore.svg" />
+      </Link>
+      <Link to="/publish" className={styles.link}>Publish
+      </Link>
+      <Link to="/comments" className={styles.link}>
+        <img src="../../assets/Comments.svg" />
+      </Link>
+      <Link to="/account" className={styles.link}>
+        <img src="../../assets/Account.svg" />
+      </Link>
     </nav>
   )
 }

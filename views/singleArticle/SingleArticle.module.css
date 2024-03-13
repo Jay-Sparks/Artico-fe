@@ -75,3 +75,9 @@
 .articleBody{
     line-height: 1.5rem;
 }
+
+
+.commentSection{
+    display: flex;
+    flex-direction: column;
+}

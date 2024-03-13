@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: whitesmoke;
-    height: 4rem;
+    height: 4.5rem;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -13,4 +13,5 @@
 
 .link{
     font-size: 0.75rem;
+    padding: 1rem 1.5rem;
 }
