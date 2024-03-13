@@ -5,19 +5,18 @@
 }
 
 .commentWrapper img{
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
 }
 
 .commentMain{
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
+    margin: 1rem 0.5rem;
 }
 
 .commentMain p{
-    margin: 0 2rem 0.5rem 0.5rem;
-
+    margin: 0 0.5rem 0.5rem 0.5rem;
 }
 
 .commentAuthor{
