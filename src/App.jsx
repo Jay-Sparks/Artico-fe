@@ -10,6 +10,7 @@ import Comments from '../views/comments/Comments'
 import Account from '../views/account/Account'
 
 import NavBar from '../components/navBar/NavBar'
+import SingleArticle from '../views/singleArticle/SingleArticle'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/publish" element={<Publish />} />
         <Route path="/comments" element={<Comments />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
       <NavBar />
     </UserContext.Provider>

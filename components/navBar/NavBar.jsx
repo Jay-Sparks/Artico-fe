@@ -1,12 +1,12 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link } from "react-router-dom";
+
 import styles from './NavBar.module.css'
 
 import UserContext from "../../contexts/User";
 
-
 function NavBar() {
-  const { loggedInUser } = useContext(UserContext)
+  // const { loggedInUser } = useContext(UserContext)
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.link}>Home</Link>

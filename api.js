@@ -4,9 +4,9 @@ const articoApi = axios.create({
     baseURL: "https://artico-dasj.onrender.com/api",
 });
 
-export const getAllArticles = ({sortBy, topic}) => {
+export const getAllArticles = ({sortBy, topic, order}) => {
     return articoApi
-        .get(`/articles`, { params: { sort_by: sortBy, topic: topic }})
+        .get(`/articles`, { params: { sort_by: sortBy, topic: topic, order: order }})
         .then((response) => {
             return response.data
         })
@@ -49,14 +49,24 @@ export const getTopics = () => {
 }
 
 export const getUserLogin = (userName) => {
-    console.log(userName, "controller");
     return articoApi
         .get(`/users/${userName}`)
         .then((response) => {
             return response.data
         })
         .catch((err) => {
-            console.log(err.response)
+            return err.response.data
+        })
+}
+
+
+export const getArticleById = (article_id) => {
+    return articoApi
+        .get(`/articles/${article_id}`)
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
             return err.response.data
         })
 }
