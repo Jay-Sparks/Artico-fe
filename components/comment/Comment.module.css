@@ -12,11 +12,14 @@
 .commentMain{
     display: flex;
     flex-direction: column;
-    margin: 1rem 0.5rem;
+    justify-content: space-between;
+    margin: 1rem 0.5rem 1rem 1rem;
+    width: 18rem;
 }
 
-.commentMain p{
-    margin: 0 0.5rem 0.5rem 0.5rem;
+.commentMain p {
+    margin: 0.25rem 0;
+    line-height: 1rem;
 }
 
 .commentAuthor{
@@ -31,7 +34,7 @@
 }
 
 .commentDate{
-    font-size: 0.5rem;
+    font-size: 0.65rem;
 }
 
 .voteWrapper{
@@ -52,6 +55,32 @@
 }
 
 .voteWrapper p{
-    margin: 0.25rem;
+    margin: 0.35rem;
     font-size: 0.85rem;
+}
+
+.optionsWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editButton{
+    background-color: white;
+    box-shadow: none;
+    padding: 0.4rem 0.3rem;
+}
+
+.deleteButton{
+    background-color: white;
+    box-shadow: none;
+    padding: 0.4rem 0.3rem;
+}
+
+.editButton img{
+    height: 1.2rem;
+}
+
+.deleteButton img{
+    height: 1.1rem;
 }

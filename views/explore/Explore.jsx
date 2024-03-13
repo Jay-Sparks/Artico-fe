@@ -16,16 +16,12 @@ function Explore() {
   const [ sortedBy, setSortedBy ] = useState("")
   const [ orderBy, setOrderBy ] = useState("")
 
-  console.log(sortedBy);
-
   useEffect(() => {
     let params = {sortBy: "created_at"}
     if(selectedTopic && !sortedBy) {
-      console.log("selectedTopic && !sortedBy");
       params = {sortBy: "created_at", topic: selectedTopic, order: "asc"}
     }
     else if(sortedBy && !selectedTopic){
-      console.log("sortedBy && !selectedTopic");
       params = {sortBy: sortedBy, topic: "", order: "asc"}
     }
     else if(sortedBy && selectedTopic){
@@ -33,7 +29,6 @@ function Explore() {
     }
 
     getAllArticles(params).then((response) => {
-      console.log(response)
       setArticleList(response.articles)
     })
 
@@ -58,10 +53,16 @@ function Explore() {
     <div className={styles.exploreWrapper}>
       <div className={styles.titleWrapper}>
           <h2>Explore</h2>
-          <div className={styles.userWrapper}>
-              <p>{`${loggedInUser.username}`}</p>
-              <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
-          </div>
+          {loggedInUser.username ?
+            <div className={styles.userWrapper}>
+                <p>{`${loggedInUser.username}`}</p>
+                <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
+            </div>
+          :
+            <Link to={`/account`}>
+                <button >login</button>
+            </Link>
+          }
       </div>
       <select name="topics" id="topics" onChange={topicHandler}>
         {topicList.map((topic, index) => {
