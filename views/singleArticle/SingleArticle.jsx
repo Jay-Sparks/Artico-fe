@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
-import { getAllUsers, getArticleById, getArticleComments, updateArticleVote } from "../../api"
-import { useEffect, useState } from "react"
+import { getAllUsers, getArticleById, getArticleComments, postNewComment, updateArticleVote } from "../../api"
+import { useEffect, useState, useContext } from "react"
+
+import UserContext from "../../contexts/User"
 
 import moment from 'moment'
 
@@ -9,10 +11,12 @@ import styles from './SingleArticle.module.css'
 import Comment from "../../components/comment/Comment"
 
 function SingleArticle() {
+  const { loggedInUser } = useContext(UserContext)
   const { article_id } = useParams()
   const [ article, setArticle ] = useState({})
   const [ viewComments, setViewComments ] = useState(false)
   const [ articleComments, setArticleComments ] = useState([])
+  const [ newComment, setNewComment ] = useState("")
 
   useEffect(() => {
     getArticleById(article_id)
@@ -62,6 +66,24 @@ function SingleArticle() {
     setViewComments((curr) => !curr)
   }
 
+  const newCommentHandler = (e) => {
+    setNewComment(e.target.value)
+  }
+
+  const submitCommentHandler = (e) => {
+    e.preventDefault()
+    const commentBody = e.target[0].value
+    if(!commentBody) alert("Whoops! You need to write your comment")
+    if(commentBody.length < 5) alert("Your comment does not meet the minimum length")
+    else {
+      const comment = {body: commentBody, author: loggedInUser.username}
+      postNewComment(article_id, comment)
+        .then((response) => {
+          console.log(response);
+        })
+    }
+  }
+
   return (
     <>
       <div className={styles.articleWrapper}>
@@ -92,10 +114,19 @@ function SingleArticle() {
           <button className={styles.upButton} onClick={upVoteHandler}>+</button>
         </div>
         <section className={styles.commentSection}>
+          { viewComments ? 
+            <form onSubmit={submitCommentHandler} className={styles.commentInput}>
+              <textarea value={newComment} type="text" placeholder="Add a comment..." onChange={newCommentHandler}></textarea>
+              <button>submit</button>
+            </form>
+            : null
+          }
           { viewComments ?
+            (
               articleComments.map((comment) => {
                 return <Comment key={comment.comment_id} comment={comment}/>
               })
+            )
               :
               <p className={styles.articleBody}>{article.body}</p>
           }

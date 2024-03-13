@@ -95,3 +95,18 @@ export const getArticleComments = (articleId) => {
             return err.response.data
         })
 }
+
+export const postNewComment = (articleId, comment) => {
+    const params = {
+        body: comment.body,
+        username: comment.author
+    }
+    return articoApi
+        .post(`/articles/${articleId}/comments`, params)
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            return err
+        })
+}

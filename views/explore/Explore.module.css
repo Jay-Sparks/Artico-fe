@@ -101,14 +101,13 @@
     margin-block-start: 0;
     margin-block-end: 0;
     font-size: smaller;
-    padding: 0.5rem 1rem;
-    background-color: indianred;
-    opacity: 80%;
-    border-radius: 0.5rem;
-    margin: 0 1rem;
+    border-radius: 2px;
+    width: 4rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin: 0.5rem 1rem;
     text-align: left;
-    color: white;
-    font-weight: 800;
+    font-weight: bolder;
 }
 
 .filters{
