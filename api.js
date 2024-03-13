@@ -70,3 +70,28 @@ export const getArticleById = (article_id) => {
             return err.response.data
         })
 }
+
+export const updateArticleVote = (inc_votes, articleId) => {
+    return articoApi
+        .patch(`/articles/${articleId}`, {
+            inc_votes: inc_votes,
+            article_id: articleId
+        })
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            return err.response.data
+        })
+}
+
+export const getArticleComments = (articleId) => {
+    return articoApi
+        .get(`/articles/${articleId}/comments`)
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            return err.response.data
+        })
+}
