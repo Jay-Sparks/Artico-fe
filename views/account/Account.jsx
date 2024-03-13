@@ -16,7 +16,6 @@ function Account() {
     e.preventDefault()
     if(!inputName) alert("Whoops! No username provided")
     else getUserLogin(inputName).then((data) => {
-      console.log(data); 
       if(data.status === 404) alert("User Not Found!")
       else if(data.status === 400) alert("Bad Request!")
       else setLoggedInUser(data.user)
@@ -30,29 +29,34 @@ function Account() {
   return (
     <>
       <section className={styles.accountView}>
-        <h2>Account</h2>
         { loggedInUser.username ? 
             (
-              <div className={styles.infoWrapper}>
-                <div className={styles.accountInfo}>
-                  <img src={loggedInUser.avatar_url}/>
-                  <p>{loggedInUser.username}</p>
-                  <p>{loggedInUser.name}</p>
+              <>
+                <h2>Account</h2>
+                <div className={styles.infoWrapper}>
+                  <div className={styles.accountInfo}>
+                    <img src={loggedInUser.avatar_url}/>
+                    <p>{loggedInUser.username}</p>
+                    <p>{loggedInUser.name}</p>
+                  </div>
+                  <button onClick={logoutHandler}>logout</button>
                 </div>
-                <button onClick={logoutHandler}>logout</button>
-              </div>
+              </>
             ):(
-              <div className={styles.accountInfo}>
-                <form className={styles.userLogin}>
-                  <input
-                    type="text"
-                    placeholder="Enter Username"
-                    onChange={inputHandler}
-                  />
-                  <p>Test user: grumpy19</p>
-                <button onClick={loginHandler}>login</button>
-                </form>
-              </div>
+              <>
+                <h2>Login</h2>
+                <div className={styles.accountInfo}>
+                  <form className={styles.userLogin}>
+                    <input
+                      type="text"
+                      placeholder="Enter Username"
+                      onChange={inputHandler}
+                    />
+                    <p>Test user: grumpy19</p>
+                  <button onClick={loginHandler}>login</button>
+                  </form>
+                </div>
+              </>
             )
         }
         </section>

@@ -55,7 +55,7 @@ export const getUserLogin = (userName) => {
             return response.data
         })
         .catch((err) => {
-            return err.response.data
+            console.log(err);
         })
 }
 
@@ -67,7 +67,7 @@ export const getArticleById = (article_id) => {
             return response.data
         })
         .catch((err) => {
-            return err.response.data
+            console.log(err);
         })
 }
 
@@ -81,7 +81,7 @@ export const updateArticleVote = (inc_votes, articleId) => {
             return response.data
         })
         .catch((err) => {
-            return err.response.data
+            console.log(err);
         })
 }
 
@@ -92,7 +92,7 @@ export const getArticleComments = (articleId) => {
             return response.data
         })
         .catch((err) => {
-            return err.response.data
+            console.log(err);
         })
 }
 
@@ -107,6 +107,31 @@ export const postNewComment = (articleId, comment) => {
             return response.data
         })
         .catch((err) => {
-            return err
+            console.log(err);
+        })
+}
+
+export const updateCommentVote = (inc_votes, commentId) => {
+    return articoApi
+        .patch(`/comments/${commentId}`, {
+            inc_votes: inc_votes,
+            comment_id: commentId
+        })
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+export const deleteComment = (commentId) => {
+    return articoApi
+        .delete(`/comments/${commentId}`)
+        .then((response) => {
+            console.log(`Deleted post with ID ${commentId}`);
+        })
+        .catch((err) => {
+            console.log(err);
         })
 }

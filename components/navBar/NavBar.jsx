@@ -15,10 +15,8 @@ function NavBar() {
       <Link to="/explore" className={styles.link}>
         <img src="../../assets/Explore.svg" />
       </Link>
-      <Link to="/publish" className={styles.link}>Publish
-      </Link>
-      <Link to="/comments" className={styles.link}>
-        <img src="../../assets/Comments.svg" />
+      <Link to="/publish" className={styles.link}>
+        <img src="../../assets/openBookPen.svg" />
       </Link>
       <Link to="/account" className={styles.link}>
         <img src="../../assets/Account.svg" />

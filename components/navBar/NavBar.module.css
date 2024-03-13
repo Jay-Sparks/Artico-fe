@@ -13,5 +13,20 @@
 
 .link{
     font-size: 0.75rem;
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.8rem;
 }
+
+.link img{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.link:hover{
+    background-color: #c8927d;
+    color: white;
+  }
+  
+  .link:active{
+    box-shadow: inset 2px 2px 5px black;
+    background-color: rgb(251, 99, 11);
+  }

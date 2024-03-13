@@ -45,17 +45,17 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: background-color 0.25s;
+  transition: background-color box-shadow 0.25s;
 }
 
 button:hover{
-  background-color: #747bff;
-  border: 1px solid transparent;
+  background-color: #c8927d;
+  color: white;
 }
 
 button:active{
-  box-shadow: 1px 1px 3px grey;
-  background-color: pink;
+  box-shadow: inset 2px 2px 5px black;
+  background-color: rgb(251, 99, 11);
 }
 
 /* button:focus, */

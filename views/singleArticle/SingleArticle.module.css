@@ -1,9 +1,9 @@
 .articleWrapper{
-    margin: 2rem 1.5rem 4rem;
+    margin: 2rem 1rem 4rem;
 }
 
 .articleTitle{
-    font-size:x-large;
+    font-size: 1.8rem;
     margin: 0 0 1rem;
 }
 
@@ -11,6 +11,7 @@
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    margin: 0;
 }
 
 .flexWrapper p{
@@ -33,12 +34,11 @@
     color: black;
     font-size: x-large;
     font-weight: bold;
-    height: 3.8rem;
+    height: 3.5rem;
     width: 33%;
     box-shadow: none;
     text-align: center;
     padding: 0;
-    /* position: relative; */
     display: flex;
     justify-content:center;
     align-items: center;
@@ -49,19 +49,15 @@
 }
 
 .commentCount{
-    background-color: blueviolet;
+    background-color: rgb(251, 99, 11);
+    opacity: 80%;
     border-radius: 6rem;
     width: 1.5rem;
     height: 1.4rem;
     line-height: 1.5rem;
     color: white;
-    font-size: 1rem;
-    /* position: absolute; */
+    font-size: 0.8rem;
     z-index: 10;
-    /* top:0;
-    left:0;
-    right:0;
-    bottom:0; */
 }
 
 .downButton{
@@ -74,8 +70,8 @@
 
 .articleBody{
     line-height: 1.5rem;
+    margin: 0;
 }
-
 
 .commentSection{
     display: flex;
@@ -92,8 +88,16 @@
 .commentInput textarea{
     width: 100%;
     margin: 0 0.5rem 0 0;
+    padding: 10px 10px 0;
+    resize: none;
+    height: 1.5rem;
 }
 
 .commentInput button{
     padding: 0.5rem 1rem;
+}
+
+.positive{
+    color: rgb(251, 99, 11);
+    font-size: 1.2rem;
 }
