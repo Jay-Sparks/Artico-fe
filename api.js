@@ -4,9 +4,9 @@ const articoApi = axios.create({
     baseURL: "https://artico-dasj.onrender.com/api",
 });
 
-export const getAllArticles = ({sortBy, topic, order}) => {
+export const getAllArticles = ({sortBy, order}) => {
     return articoApi
-        .get(`/articles`, { params: { sort_by: sortBy, topic: topic, order: order }})
+        .get(`/articles`, { params: { sort_by: sortBy, order: order }})
         .then((response) => {
             return response.data
         })

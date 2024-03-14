@@ -8,6 +8,12 @@
     align-items: center;
 }
 
+.homeWrapper h3{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 1rem 0 0;
+}
+
 .userWrapper{
     display: flex;
     justify-content: space-around;
@@ -22,7 +28,7 @@
 }
 
 .carousel{
-    margin: 2rem 0;
+    margin: 0;
 }
 
 .imageCarousel{
@@ -43,53 +49,83 @@
     flex-direction: column;
     flex-shrink: 0;
     scroll-snap-align: start;
+    height: 48vh;
     width: 100%;
     margin: 0 0.5rem;
     transform-origin: center center;
     transform: scale(1);
     transition: transform 0.5s;
-    position: relative;
+}
+
+.imageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 2px 2px 6px grey;
+    width: 90vw;
 }
 
 .tileDetails{
     display: flex;
     align-items: center;
-    justify-content:left;
+    margin: 0 1rem 1rem;
 }
 
 .tileDetails img{
-    width: 2rem;
+    width: 2.5rem;
     height: 2rem;
     margin-right: 0.5rem;
-    border-radius: 4rem;
+    border-radius: 2rem;
 }
 
 .carouselAuthor{
     margin-block: 0;
     margin-inline: 0;
-    margin: 1rem 0;
+    font-size: 0.8rem;
 }
 
-.imageContainer{
-    position: relative;
-    display: inline-block;
-}
 
 .carouselTileImage{
-    display: block;
     width: 100%;
-    height: 40vh;
+}
+
+.carouselTitle {
+    color: black; 
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: bolder;
+    text-align: left;
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 1rem;
+    height: 3rem;
 }
 
 .overlayText {
     position: absolute;
-    top: 50%; 
-    left: 50%; 
+    top: 7rem; 
+    left: 11rem; 
     transform: translate(-50%, -50%); 
-    color: #fff; 
-    padding: 10px 20px; 
-    font-size: 20px; 
-    text-align: center;
+    color: white; 
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    font-weight: bolder;
+    text-align: left;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    z-index: 3;
+}
+
+.overlayBackground{
+    position: absolute;
+    top: 5rem; 
+    left: 6rem;
+    padding: 3rem 5rem;
+    background-color: black;
+    opacity: 65%;
+    z-index: 2;
 }
 
 .topics{
@@ -117,6 +153,7 @@
     transition: transform 0.5s;
     position: relative;
     margin: 1.5rem auto;
+    box-shadow: 2px 2px 6px grey;
 }
 
 /* .slides::-webkit-scrollbar {

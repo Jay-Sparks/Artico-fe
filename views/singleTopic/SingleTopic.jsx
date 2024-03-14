@@ -8,18 +8,44 @@ import { useEffect, useState } from 'react';
 function SingleTopic() {
   const [ articleList, setArticleList ] = useState([])
   const [ searchParams, setSearchParams] = useSearchParams()
+  const [ sortedBy, setSortedBy ] = useState("votes")
+  const [ orderBy, setOrderBy ] = useState("desc")
+  
   const topic = searchParams.get("topic")
 
   useEffect(() => {
-    const params = {topic: topic}
+    let params = {sortBy: sortedBy, order: orderBy}
     getAllArticles(params).then((response) => {
+      console.log(params);
+      console.log(response.articles);
       setArticleList(response.articles)
     })
-  }, [])  
+
+  }, [sortedBy, orderBy])  
+
+  const sortByHandler = (e) => [
+    setSortedBy(e.target.value)
+  ]
+
+  const orderHandler = (e) => [
+    setOrderBy(e.target.value)
+  ]
 
   return (
     <div className={styles.topicWrapper}>
       <h2>{topic}</h2>
+      <div className={styles.filters}>
+        <select name="sortBy" id="sortBy" onChange={sortByHandler} value={sortedBy}>
+          <option className="option" value="created_at">date</option>
+          <option value="title">title</option>
+          <option value="author">author</option>
+          <option value="votes">votes</option>
+        </select>
+        <select name="order" id="order" onChange={orderHandler} value={orderBy}>
+          <option value="asc" >ascending</option>
+          <option value="desc">descending</option>
+        </select>
+      </div>
       <section className={styles.articles}>
         <ul className={styles.articleWrapper}>
           {articleList.map((article) => {
