@@ -7,6 +7,12 @@
     margin: 1rem 0 0.5rem;
 }
 
+.filters{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.2rem 0;
+}
+
 .articleWrapper{
     list-style-type: none;
     margin-block-start: 0;
@@ -102,4 +108,8 @@
 .positive{
     color: rgb(251, 99, 11);
     font-size: 1.2rem;
+}
+
+.option{
+    font-size: 10rem;
 }

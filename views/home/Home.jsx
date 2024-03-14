@@ -7,7 +7,7 @@ import styles from './Home.module.css'
 import { getAllArticles, getAllUsers, getTopics } from '../../api'
 
 import UserContext from '../../contexts/User'
-import SingleArticle from '../singleArticle/SingleArticle';
+// import SingleArticle from '../singleArticle/SingleArticle';
 
 function Home() {
     const { loggedInUser } = useContext(UserContext)
@@ -70,16 +70,16 @@ function Home() {
                     {orderedArticles.map((article) => {
                         return (
                             <li key={article.article_id} className={styles.carouselTile}>
-                                <div className={styles.imageContainer}>
                                     <Link to={`/articles/${article.article_id}`}>
-                                        <img src={article.article_img_url} className={styles.carouselTileImage} />
-                                        <p className={styles.overlayText}>{article.title}</p>
+                                        <div className={styles.imageContainer}> 
+                                            <img src={article.article_img_url} className={styles.carouselTileImage} />
+                                            <p className={styles.carouselTitle}>{article.title}</p>
+                                            <div className={styles.tileDetails}>
+                                                <img src={article.avatar_url}/>
+                                                <p className={styles.carouselAuthor}>@{article.author}</p>
+                                            </div>
+                                        </div>
                                     </Link>
-                                </div>
-                                <div className={styles.tileDetails}>
-                                    <img src={article.avatar_url}/>
-                                    <p className={styles.carouselAuthor}>@{article.author}</p>
-                                </div>
                             </li>
                         )
                     })}
@@ -93,6 +93,8 @@ function Home() {
                             <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id}>
                                 <li  className={styles.topicTile}>
                                     <img src={topic.article_img_url}/>
+                                    <div className={styles.overlayBackground}></div>
+                                    <p className={styles.overlayText}>{topic.topic}</p>
                                 </li>
                             </Link>
                         )

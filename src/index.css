@@ -58,6 +58,14 @@ button:active{
   background-color: rgb(251, 99, 11);
 }
 
+a {
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+  color: black;
+}
+
 /* button:focus, */
 /* button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -66,11 +74,11 @@ button:active{
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: black;
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: rgb(251, 99, 11);
   }
   /* button {
     background-color: #f9f9f9;
