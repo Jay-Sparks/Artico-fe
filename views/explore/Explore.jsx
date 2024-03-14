@@ -17,16 +17,7 @@ function Explore() {
   const [ orderBy, setOrderBy ] = useState("")
 
   useEffect(() => {
-    let params = {sortBy: "created_at"}
-    if(selectedTopic && !sortedBy) {
-      params = {sortBy: "created_at", topic: selectedTopic}
-    }
-    else if(sortedBy && !selectedTopic){
-      params = {sortBy: sortedBy, topic: ""}
-    }
-    else if(sortedBy && selectedTopic){
-      params = {sortBy: sortedBy, topic: selectedTopic}
-    }
+    let params = {sortBy: sortedBy, order: orderBy}
 
     getAllArticles(params).then((response) => {
       setArticleList(response.articles)
@@ -35,6 +26,7 @@ function Explore() {
     getTopics().then((response) => {
       setTopicList(response.topics)
     })
+
   }, [selectedTopic, sortedBy])
 
   const topicHandler = (e) => {
@@ -69,10 +61,9 @@ function Explore() {
           return <option key={index} value={topic.slug} >{topic.slug}</option>
         })}
       </select> */}
-      <input type="text" placeholder="search articles" />
       <div>
       {topicList.map((topic, index) => {
-        return <Link key={index} to={`/${topic.slug}`}>
+        return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
           <button>{topic.slug}</button>
         </Link>
       })}

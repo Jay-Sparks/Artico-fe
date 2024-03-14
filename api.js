@@ -5,6 +5,7 @@ const articoApi = axios.create({
 });
 
 export const getAllArticles = ({sortBy, order, topic}) => {
+    console.log(topic);
     let params = { sort_by: sortBy, order: order }
     if(topic) params = { topic: topic }
     return articoApi

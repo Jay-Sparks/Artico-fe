@@ -14,10 +14,10 @@ function SingleTopic() {
   const topic = searchParams.get("topic")
 
   useEffect(() => {
+    setSearchParams({topic: topic})
     let params = {sortBy: sortedBy, order: orderBy}
     getAllArticles(params).then((response) => {
       console.log(params);
-      console.log(response.articles);
       setArticleList(response.articles)
     })
 
