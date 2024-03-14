@@ -81,7 +81,7 @@ function SingleArticle() {
   const submitCommentHandler = (e) => {
     e.preventDefault()
     const commentBody = e.target[0].value
-    if(!loggedInUser.username) alert("You must be logged in to write a comment")
+    if(!loggedInUser.username) alert("You must be logged in to post a comment")
     else if(!commentBody) alert("Whoops! You need to write your comment")
     else if(commentBody.length < 5) alert("Your comment does not meet the minimum length")
     else {
@@ -138,7 +138,7 @@ function SingleArticle() {
           { viewComments ? 
             <form onSubmit={submitCommentHandler} value="" className={styles.commentInput}>
               <textarea value={newComment} type="text" placeholder="Add a comment..." onChange={newCommentHandler}></textarea>
-              <button>submit</button>
+              <button>post</button>
             </form>
             : null
           }
