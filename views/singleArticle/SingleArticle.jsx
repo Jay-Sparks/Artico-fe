@@ -9,6 +9,7 @@ import moment from 'moment'
 import styles from './SingleArticle.module.css'
 
 import Comment from "../../components/comment/Comment"
+import DeleteModal from "../../components/deleteModal/DeleteModal.jsx"
 
 function SingleArticle() {
   const { loggedInUser } = useContext(UserContext)
@@ -17,6 +18,8 @@ function SingleArticle() {
   const [ viewComments, setViewComments ] = useState(false)
   const [ articleComments, setArticleComments ] = useState([])
   const [ newComment, setNewComment ] = useState("")
+  const [ showDeleteModal, setShowDeleteModal ] = useState(false)
+  const [ deleteComment, setDeleteComment ] = useState(0)
 
   useEffect(() => {
     getArticleById(article_id)
@@ -85,7 +88,7 @@ function SingleArticle() {
       const comment = {body: commentBody, author: loggedInUser.username}
       setArticleComments((currComments) => {
         const timeStamp = new Date(Date.now())
-        e.target[0].value = ''
+        setNewComment("")
         const newComment = {
           comment_id: Math.floor(Math.random() * 10000),
           body: commentBody,
@@ -110,7 +113,11 @@ function SingleArticle() {
         <h2 className={styles.articleTitle}>{article.title}</h2>
         <div className={styles.flexWrapper}>
           <p>by {article.author}</p>
-          <p>{article.votes > 0 ? ( <p><span className={styles.positive}>+</span>{article.votes} </p>) : (article.votes)}</p>
+          {article.votes > 0 ? 
+            <p><span className={styles.positive}>+</span>{article.votes} </p>
+            : 
+            <p>{article.votes}</p>
+          }
         </div>
         <img className={styles.articleImg} src={article.article_img_url} />
         <div className={styles.votingWrapper}>
@@ -129,7 +136,7 @@ function SingleArticle() {
         </div>
         <section className={styles.commentSection}>
           { viewComments ? 
-            <form onSubmit={submitCommentHandler} className={styles.commentInput}>
+            <form onSubmit={submitCommentHandler} value="" className={styles.commentInput}>
               <textarea value={newComment} type="text" placeholder="Add a comment..." onChange={newCommentHandler}></textarea>
               <button>submit</button>
             </form>
@@ -138,13 +145,28 @@ function SingleArticle() {
           { viewComments ?
               (
                 articleComments.map((comment) => {
-                  return <Comment key={comment.comment_id} comment={comment} setArticleComments={setArticleComments} setArticle={setArticle}/>
+                  return  <Comment 
+                            key={comment.comment_id} 
+                            comment={comment} 
+                            setArticleComments={setArticleComments} 
+                            setArticle={setArticle} 
+                            setShowDeleteModal={setShowDeleteModal}
+                            setDeleteComment={setDeleteComment}
+                          />
                 })
               )
               :
               <p className={styles.articleBody}>{article.body}</p>
           }
         </section>
+        { showDeleteModal ? 
+          <DeleteModal 
+            setShowDeleteModal={setShowDeleteModal} 
+            setArticleComments={setArticleComments}
+            setArticle={setArticle}
+            comment={deleteComment}
+          /> 
+        : null}
       </div>
     </>
   )

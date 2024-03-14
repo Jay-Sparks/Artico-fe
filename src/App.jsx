@@ -10,17 +10,11 @@ import Account from '../views/account/Account'
 
 import NavBar from '../components/navBar/NavBar'
 import SingleArticle from '../views/singleArticle/SingleArticle'
+import SingleTopic from '../views/singleTopic/SingleTopic'
 
 
 function App() {
-
   const [ loggedInUser, setLoggedInUser ] = useState({})
-
-  // {
-  //   "username": "grumpy19",
-  //   "name": "robert grump",
-  //   "avatar_url": "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700"
-  // }
 
   return (
     <UserContext.Provider value={{ loggedInUser: loggedInUser, setLoggedInUser: setLoggedInUser}}>
@@ -30,6 +24,7 @@ function App() {
         <Route path="/publish" element={<Publish />} />
         <Route path="/account" element={<Account />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/articles" element={<SingleTopic />} />
       </Routes>
       <NavBar />
     </UserContext.Provider>

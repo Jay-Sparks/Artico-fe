@@ -60,15 +60,22 @@ function Explore() {
             </div>
           :
             <Link to={`/account`}>
-                <button >login</button>
+                <button>login</button>
             </Link>
           }
       </div>
-      <select name="topics" id="topics" onChange={topicHandler}>
+      {/* <select name="topics" id="topics" onChange={topicHandler}>
         {topicList.map((topic, index) => {
           return <option key={index} value={topic.slug} >{topic.slug}</option>
         })}
-      </select>
+      </select> */}
+      <div>
+      {topicList.map((topic, index) => {
+        return <Link key={index} to={`/${topic.slug}`}>
+          <button>{topic.slug}</button>
+        </Link>
+      })}
+      </div>
       <h3>RESULTS</h3>
       <div className={styles.filters}>
         <select name="sortBy" id="sortBy" onChange={sortByHandler}>

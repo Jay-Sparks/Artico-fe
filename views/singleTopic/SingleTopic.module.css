@@ -1,25 +1,10 @@
-.exploreWrapper{
-    margin: 1rem;
+.topicWrapper{
+    padding: 1rem;
+    margin-bottom: 4rem;
 }
 
-
-.titleWrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.userWrapper{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 8rem;
-}
-
-.userAvatar{
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 2rem;
+.topicWrapper h2{
+    margin: 1rem 0 0.5rem;
 }
 
 .articleWrapper{
@@ -40,6 +25,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin: 1rem 0;
+    /* border-bottom: 1px solid grey; */
 }
 
 .articleTile h4{
@@ -49,19 +35,13 @@
     margin-block-end: 0;
     text-align: left;
     font-weight: bold;
+    /* width: 90vw; */
     margin: 1rem 1rem 0.5rem 1rem;
 }
 
-.articleTile h5{
-    font-size: small;
-    font-weight: bold;
-    margin: 1rem;
-    text-align: left;
-}
 
 .articleTile img{
     width: 100%;
-    margin: 1rem 0;
 }
 
 .articleTitle{
@@ -83,15 +63,27 @@
 
 .date{
     font-size: smaller;
-    margin: 1rem;
+    margin: 0;
 }
 
-.authorVotes{
+.authorDetails{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
-    margin: 0 0 0.5rem;
+    margin: 0 1rem;
+}
+
+.authorName{
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+}
+
+.articleTile h5{
+    font-size: small;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    text-align: left;
 }
 
 .topic{
@@ -107,19 +99,7 @@
     font-weight: bolder;
 }
 
-.filters{
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 0 0.5rem;
+.positive{
+    color: rgb(251, 99, 11);
+    font-size: 1.2rem;
 }
-
-select{
-    height: 2rem;
-    width: 40vw;
-}
-
-option{
-    font-size: 2rem;
-    width: 10rem;
-}
-

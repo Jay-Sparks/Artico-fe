@@ -15,7 +15,7 @@ function NavBar() {
       <Link to="/explore" className={styles.link}>
         <img src="../../assets/Explore.svg" />
       </Link>
-      <Link to="/publish" className={styles.link}>
+      <Link to="/publish" className={styles.linkPublish}>
         <img src="../../assets/openBookPen.svg" />
       </Link>
       <Link to="/account" className={styles.link}>
