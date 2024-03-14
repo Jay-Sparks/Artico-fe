@@ -1,11 +1,17 @@
 import { useContext, useState } from "react"
+
 import UserContext from "../../contexts/User"
-import styles from './Account.module.css'
+
 import { getUserLogin } from "../../api"
+
+import ErrorPage from '../errorPage/ErrorPage'
+
+import styles from './Account.module.css'
 
 function Account() {
   const {loggedInUser, setLoggedInUser } = useContext(UserContext)
   const [ inputName, setInputName ] = useState("")
+  const [ error, setError ] = useState(null)
 
   const logoutHandler = (e) => {
     e.preventDefault()
@@ -15,16 +21,20 @@ function Account() {
   const loginHandler = (e) => {
     e.preventDefault()
     if(!inputName) alert("Whoops! No username provided")
-    else getUserLogin(inputName).then((data) => {
-      if(data.status === 404) alert("User Not Found!")
-      else if(data.status === 400) alert("Bad Request!")
-      else setLoggedInUser(data.user)
-    })
+    else getUserLogin(inputName)
+      .then((data) => {
+        setLoggedInUser(data.user)
+      })
+      .catch((err) => {
+        setError({ err });
+      })
   }
 
   const inputHandler = (e) => {
     setInputName(e.target.value);
   }
+
+  if(error) return <ErrorPage message={error} />
 
   return (
     <>

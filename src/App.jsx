@@ -11,6 +11,7 @@ import Account from '../views/account/Account'
 import NavBar from '../components/navBar/NavBar'
 import SingleArticle from '../views/singleArticle/SingleArticle'
 import SingleTopic from '../views/singleTopic/SingleTopic'
+import ErrorPage from '../views/errorPage/ErrorPage'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/articles" element={<SingleTopic />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <NavBar />
     </UserContext.Provider>

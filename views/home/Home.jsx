@@ -1,53 +1,66 @@
 import { useEffect, useState, useContext } from 'react'
-import { Routes, Route } from "react-router-dom"
 import { Link } from "react-router-dom";
-
-import styles from './Home.module.css'
 
 import { getAllArticles, getAllUsers, getTopics } from '../../api'
 
 import UserContext from '../../contexts/User'
-// import SingleArticle from '../singleArticle/SingleArticle';
+import ErrorPage from '../errorPage/ErrorPage';
+
+import styles from './Home.module.css'
 
 function Home() {
     const { loggedInUser } = useContext(UserContext)
     const [ orderedArticles , setOrderedArticles ] = useState([])
     const [ topicList, setTopicList ] = useState([])
+    const [ error, setError ] = useState(null)
 
     useEffect(() => {
-        getAllArticles("created_at").then((allArticles) => {
-            const articles = allArticles.articles.slice(0,10)
-            return articles
-        })
-        .then((articles) => {getAllUsers().then((response) => {
-            const {users} = response
-            const avatars = articles.map(({author}, index) => {
-                let avatarArticle = {}
-                users.forEach(({username, avatar_url}) => {
-                    if(author === username) avatarArticle = {...articles[index], avatar_url: avatar_url}
-                })
-                return avatarArticle
+        getAllArticles("created_at")
+            .then((allArticles) => {
+                const articles = allArticles.articles.slice(0,10)
+                return articles
             })
-            setOrderedArticles(avatars)
-            })
-        })
-        getTopics().then((topics) => {
-            return topics
-        }).then(({topics}) => {
-            const topicPics = topics.map((topic) => {
-                const params = {sortBy: "votes", topic: topic.slug}
-                return getAllArticles(params).then(({articles}) => {
-                    const topicArticle = articles[0]
-                    return topicArticle
+            .then((articles) => {getAllUsers().then((response) => {
+                const {users} = response
+                const avatars = articles.map(({author}, index) => {
+                    let avatarArticle = {}
+                    users.forEach(({username, avatar_url}) => {
+                        if(author === username) avatarArticle = {...articles[index], avatar_url: avatar_url}
+                    })
+                    return avatarArticle
                 })
+                setOrderedArticles(avatars)
+                })
+            })
+            .catch((err) => {
+                setError({ err })
+            })
+
+
+            getTopics()
+                .then((topics) => {
+                    return topics
+                })
+                .then(({topics}) => {
+                    const topicPics = topics.map((topic) => {
+                        const params = {sortBy: "votes", topic: topic.slug}
+                        return getAllArticles(params)
+                            .then(({articles}) => {
+                                const topicArticle = articles[0]
+                                return topicArticle
+                            })
             })
             Promise.all(topicPics).then((topicImageList) => {
                 setTopicList(topicImageList)
+            })
+            .catch((err) => {
+                setError({ err })
             })
         })
     },
     [])
 
+    if (error) return <ErrorPage message={error}/>
 
     return (
         <div className={styles.homeWrapper}>

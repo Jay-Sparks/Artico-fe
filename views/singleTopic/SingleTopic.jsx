@@ -1,39 +1,74 @@
+import { useContext, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import moment from 'moment'
 
 import styles from './SingleTopic.module.css'
-import { getAllArticles } from '../../api';
-import { useEffect, useState } from 'react';
+import { getAllArticles, getTopics } from '../../api';
+
+import ArticleTile from '../../components/articleTile/ArticleTile';
+import UserContext from '../../contexts/User';
 
 function SingleTopic() {
+
+  const { loggedInUser } = useContext(UserContext)
+  
   const [ articleList, setArticleList ] = useState([])
   const [ searchParams, setSearchParams] = useSearchParams()
   const [ sortedBy, setSortedBy ] = useState("votes")
   const [ orderBy, setOrderBy ] = useState("desc")
+  const [ topicList, setTopicList ] = useState([])
+
   
   const topic = searchParams.get("topic")
 
   useEffect(() => {
-    let params = {sortBy: sortedBy, order: orderBy}
+    let params = {sortBy: sortedBy, order: orderBy, topic: topic}
     getAllArticles(params).then((response) => {
-      console.log(params);
-      console.log(response.articles);
+      console.log(response);
       setArticleList(response.articles)
     })
 
-  }, [sortedBy, orderBy])  
+    getTopics().then((response) => {
+      setTopicList(response.topics)
+    })
 
-  const sortByHandler = (e) => [
+  }, [sortedBy, orderBy, topic])  
+
+  const sortByHandler = (e) => {
     setSortedBy(e.target.value)
-  ]
+  }
 
-  const orderHandler = (e) => [
+  const orderHandler = (e) => {
     setOrderBy(e.target.value)
-  ]
+  }
+  
+  const topicHandler = (newTopic) => {
+    const newParams = new URLSearchParams(searchParams)
+    console.log(newParams);
+    newParams.set('topic', newTopic)
+    setSearchParams(newParams)
+  }
 
   return (
     <div className={styles.topicWrapper}>
-      <h2>{topic}</h2>
+      <div className={styles.titleWrapper}>
+        <h2>Explore</h2>
+        {loggedInUser.username ?
+          <div className={styles.userWrapper}>
+              <p>{`${loggedInUser.username}`}</p>
+              <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
+          </div>
+        :
+          <Link to={`/account`}>
+              <button>login</button>
+          </Link>
+        }
+      </div>
+      {topicList.map((topic, index) => {
+        return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
+          <button onClick={() => topicHandler(topic.slug)} value={topic.slug}>{topic.slug}</button>
+        </Link>
+      })}
+      <h3>RESULTS</h3>
       <div className={styles.filters}>
         <select name="sortBy" id="sortBy" onChange={sortByHandler} value={sortedBy}>
           <option className="option" value="created_at">date</option>
@@ -50,26 +85,7 @@ function SingleTopic() {
         <ul className={styles.articleWrapper}>
           {articleList.map((article) => {
             return (
-              <li key={article.article_id} className={styles.articleTile}>
-                <div className={styles.articleInfo}>
-                  <h4>{article.title}</h4>
-                  <p className={styles.topic}>{article.topic}</p>
-                  <Link to={`/articles/${article.article_id}`}>
-                      <img src={article.article_img_url}/>
-                  </Link>
-                  <div className={styles.authorDetails}>
-                    <div className={styles.authorName}>
-                      <h5>by {article.author}</h5>  
-                      <p className={styles.date}>{moment(article.created_at).format('L')}</p>
-                    </div>
-                    {article.votes > 0 ? 
-                      <p><span className={styles.positive}>+</span>{article.votes} </p>
-                      : 
-                      <p>{article.votes}</p>
-                    }
-                  </div>
-                </div>
-              </li>
+              <ArticleTile article={article} key={article.article_id} />
             )
           })}
         </ul>

@@ -4,9 +4,11 @@ const articoApi = axios.create({
     baseURL: "https://artico-dasj.onrender.com/api",
 });
 
-export const getAllArticles = ({sortBy, order}) => {
+export const getAllArticles = ({sortBy, order, topic}) => {
+    let params = { sort_by: sortBy, order: order, topic: topic}
+    if(!topic) params = { sort_by: sortBy, order: order }
     return articoApi
-        .get(`/articles`, { params: { sort_by: sortBy, order: order }})
+        .get(`/articles`, { params: params })
         .then((response) => {
             return response.data
         })
@@ -129,7 +131,7 @@ export const deleteComment = (commentId) => {
     return articoApi
         .delete(`/comments/${commentId}`)
         .then((response) => {
-            console.log(`Deleted post with ID ${commentId}`);
+            return response.data
         })
         .catch((err) => {
             console.log(err);

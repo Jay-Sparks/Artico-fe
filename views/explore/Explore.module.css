@@ -118,8 +118,8 @@ select{
     width: 40vw;
 }
 
-option{
-    font-size: 2rem;
-    width: 10rem;
+.topicSelect button:active {
+    box-shadow: 0 0 1px black;
+    background-color: #c8927d;
 }
 

@@ -1,7 +1,13 @@
+import { useState } from 'react'
 import { deleteComment } from '../../api'
+
+import ErrorPage from '../../views/errorPage/ErrorPage'
+
 import styles from './DeleteModal.module.css'
 
 function DeleteModal({ setShowDeleteModal, setArticleComments, setArticle, comment }) {
+
+    const [ error, setError ] = useState(null)
 
     const closeModalHandler = () => {
         setShowDeleteModal(false)
@@ -18,8 +24,11 @@ function DeleteModal({ setShowDeleteModal, setArticleComments, setArticle, comme
             return {...currArticle, comment_count: currArticle.comment_count - 1}
         })
         setShowDeleteModal(false)
+        console.log(comment.comment_id)
         deleteComment(comment.comment_id)
     }
+
+    if(error) return <ErrorPage />
 
     return (
         <>
