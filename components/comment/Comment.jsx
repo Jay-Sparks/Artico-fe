@@ -6,7 +6,7 @@ import moment from 'moment'
 import styles from './Comment.module.css'
 import { deleteComment, updateCommentVote } from '../../api';
 
-function Comment({ comment, setArticleComments, setArticle }) {
+function Comment({ comment, setArticleComments, setArticle, setShowDeleteModal, setDeleteComment }) {
 
     const { loggedInUser } = useContext(UserContext)
     const [ viewFullCard, setViewFullCard ] = useState(false)
@@ -34,16 +34,8 @@ function Comment({ comment, setArticleComments, setArticle }) {
     }
 
     const deleteHandler = () => {
-        setArticleComments((currArticleComments) => {
-            const updatedComments = currArticleComments.filter((currComment) => {
-                return currComment.comment_id !== comment.comment_id
-            })
-            return updatedComments
-        })
-        setArticle((currArticle) => {
-            return {...currArticle, comment_count: currArticle.comment_count - 1}
-        })
-        deleteComment(comment.comment_id)
+        setShowDeleteModal(true)
+        setDeleteComment(comment)
     }
 
     const viewFullHandler = () => {

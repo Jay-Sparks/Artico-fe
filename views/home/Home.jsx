@@ -90,9 +90,11 @@ function Home() {
                 <ul className={styles.topicWrapper}>
                     {topicList.map((topic) => {
                         return (
-                            <li key={topic.article_id} className={styles.topicTile}>
-                                <img src={topic.article_img_url}/>
-                            </li>
+                            <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id}>
+                                <li  className={styles.topicTile}>
+                                    <img src={topic.article_img_url}/>
+                                </li>
+                            </Link>
                         )
                     })}
                 </ul>

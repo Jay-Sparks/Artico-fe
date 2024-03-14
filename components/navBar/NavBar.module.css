@@ -17,8 +17,8 @@
 }
 
 .link img{
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .link:hover{
@@ -30,3 +30,23 @@
     box-shadow: inset 2px 2px 5px black;
     background-color: rgb(251, 99, 11);
   }
+
+  .linkPublish {
+    font-size: 0.75rem;
+    padding: 1.2rem 1.8rem;
+}
+
+.linkPublish img{
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.linkPublish:hover{
+    background-color: #c8927d;
+    color: white;
+  }
+  
+.linkPublish:active{
+  box-shadow: inset 2px 2px 5px black;
+  background-color: rgb(251, 99, 11);
+}
