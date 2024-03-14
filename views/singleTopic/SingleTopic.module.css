@@ -3,14 +3,29 @@
     margin-bottom: 4rem;
 }
 
-.topicWrapper h2{
-    margin: 1rem 0 0.5rem;
+.titleWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userWrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8rem;
+}
+
+.userAvatar{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2rem;
 }
 
 .filters{
     display: flex;
     justify-content: space-between;
-    margin: 1.2rem 0;
+    margin: 1rem 0 0.5rem;
 }
 
 .articleWrapper{
@@ -22,74 +37,6 @@
     padding-inline-start: 0;
     display: flex;
     flex-direction: column;
-}
-
-
-.articleTile{
-    box-shadow: 1px 1px 12px grey;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 1rem 0;
-    /* border-bottom: 1px solid grey; */
-}
-
-.articleTile h4{
-    font-size: medium;
-    display: block;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    text-align: left;
-    font-weight: bold;
-    /* width: 90vw; */
-    margin: 1rem 1rem 0.5rem 1rem;
-}
-
-
-.articleTile img{
-    width: 100%;
-}
-
-.articleTitle{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.flexCol{
-    display: flex;
-    flex-direction: column;
-}
-
-.articleInfo{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.date{
-    font-size: smaller;
-    margin: 0;
-}
-
-.authorDetails{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 1rem;
-}
-
-.authorName{
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0;
-}
-
-.articleTile h5{
-    font-size: small;
-    font-weight: bold;
-    margin: 0 0 0.5rem 0;
-    text-align: left;
 }
 
 .topic{
