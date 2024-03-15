@@ -126,10 +126,10 @@ function SingleArticle() {
           <button className={styles.downButton} onClick={downVoteHandler}>-</button>
           <button onClick={viewCommentsHandler}>
             {viewComments ? 
-                <img src="../../assets/article.svg" className={styles.commentLogo} />
+                <img src="../src/assets/article.svg" className={styles.commentLogo} />
               :
                 <>
-                  <img src="../../assets/commentBubble.svg" className={styles.commentLogo} />
+                  <img src="../src/assets/commentBubble.svg" className={styles.commentLogo} />
                   <div className={styles.commentCount}>{article.comment_count}</div>
                 </>
             }
