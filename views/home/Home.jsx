@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getAllArticles, getAllUsers, getTopics } from '../../api'
 
 import UserContext from '../../contexts/User'
-import ErrorPage from '../errorPage/ErrorPage';
+import ErrorPage from '../errorPage/ErrorPage'
 
 import styles from './Home.module.css'
 import Header from '../../components/header/Header';

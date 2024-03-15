@@ -48,3 +48,9 @@
     padding: 0.5rem 1rem;
     width: 6.5rem;
 }
+
+
+.isLoading{
+    text-align: center;
+    margin: 30vh 0;
+}
