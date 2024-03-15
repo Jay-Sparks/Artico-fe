@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import homeImage from '../src/assets/Home.svg'
 
 import styles from './NavBar.module.css'
 
@@ -7,7 +8,7 @@ function NavBar() {
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.link}>
-        <img src="../src/assets/Home.svg" />
+        <img src={homeImage} />
       </Link>
       <Link to="/explore" className={styles.link}>
         <img src="../src/assets/Explore.svg" />
