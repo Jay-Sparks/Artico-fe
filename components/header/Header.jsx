@@ -18,7 +18,7 @@ function Header({ title }) {
             </div>
             :
             <Link to={`/account`}>
-                <button>login</button>
+                <button className={styles.loginButton}>login</button>
             </Link>
             }
         </div>

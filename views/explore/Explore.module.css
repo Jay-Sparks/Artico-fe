@@ -1,5 +1,5 @@
 .exploreWrapper{
-    margin: 1rem;
+    margin: 1rem 1.5rem;
 }
 
 
@@ -123,3 +123,17 @@ select{
     background-color: #c8927d;
 }
 
+.topicSelect button{
+    padding: 0.5rem 1rem;
+}
+
+.topicSelect button{
+    padding: 0.5rem 1rem;
+    width: 6.5rem;
+}
+
+.topicWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -43,6 +43,11 @@
     align-items: center;
 }
 
+.topicWrapper select{
+    width: 100%;
+    margin: 0 0 1rem;
+}
+
 .addButton{
     font-size: 0.7rem;
     padding: 0.7rem 1rem;

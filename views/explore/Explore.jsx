@@ -1,16 +1,14 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
 import { getAllArticles, getTopics } from "../../api"
-import UserContext from "../../contexts/User"
 
 import ArticleTile from '../../components/articleTile/ArticleTile'
+import Header from '../../components/header/Header'
 
 import styles from './Explore.module.css'
 
 
 function Explore() {
-  const { loggedInUser } = useContext(UserContext)
   const [ articleList, setArticleList ] = useState([])
   const [ topicList, setTopicList ] = useState([])
   const [ sortedBy, setSortedBy ] = useState("created_at")
@@ -45,24 +43,14 @@ function Explore() {
 
   return (
     <div className={styles.exploreWrapper}>
-      <div className={styles.titleWrapper}>
-          <h2>Explore</h2>
-          {loggedInUser.username ?
-            <div className={styles.userWrapper}>
-                <p>{`${loggedInUser.username}`}</p>
-                <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
-            </div>
-          :
-            <Link to={`/account`}>
-                <button>login</button>
-            </Link>
-          }
+      <Header title={"Explore"}/>
+      <div className={styles.topicWrapper}>
+        {topicList.map((topic, index) => {
+          return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
+            <button>{topic.slug}</button>
+          </Link>
+        })}
       </div>
-      {topicList.map((topic, index) => {
-        return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
-          <button>{topic.slug}</button>
-        </Link>
-      })}
       <h3>Results</h3>
       <div className={styles.filters}>
         <select name="sortBy" id="sortBy" onChange={sortByHandler} value={sortedBy}>
