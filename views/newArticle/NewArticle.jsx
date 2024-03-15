@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import Header from "../../components/header/Header"
 import UserContext from "../../contexts/User"
-
 import styles from './NewArticle.module.css'
 import { getTopics, postNewArticle } from "../../api"
-
+import ErrorPage from '../errorPage/ErrorPage'
 
 function NewArticle() {
+
   const { loggedInUser } = useContext(UserContext)
   const [ topicList, setTopicList ] = useState([])
   const [ existingTopic, setExistingTopic ] = useState("")
@@ -15,12 +15,15 @@ function NewArticle() {
   const [ newTitle, setNewTitle ] = useState("")
   const [ newCoverImg, setNewCoverImg ] = useState("https://placehold.co/300x200?text=Add a cover image")
   const [ newBody, setNewBody ] = useState("")
+  const [ error, setError ] = useState(null)
 
-  console.log(newCoverImg);
 
   useEffect(() => {
     getTopics().then((response) => {
       setTopicList(response.topics)
+    })
+    .catch((err) => {
+      setError({ err });
     })
   }, [])
 
@@ -32,7 +35,6 @@ function NewArticle() {
 
   const addImageHandler = (e) => {
     e.preventDefault()
-    // add image checks here
     console.log("CLICKED");
     setNewCoverImg(e.target.value)
   }
@@ -46,26 +48,29 @@ function NewArticle() {
       article_img_url: newCoverImg,
       body: newBody
     }
-    console.log(newArticle);
     postNewArticle(newArticle)
       .then(({article}) => {
-        console.log(article);
         alert(article.title + " has been published")
         setNewTopic("")
         setNewTitle("")
         setNewCoverImg("https://placehold.co/300x200?text=Add a cover image")
         setNewBody("")
       })
+      .catch((err) => {
+        setError({ err });
+      })
   }
+
+  if(error) return <ErrorPage message={error} />
 
   return (
     <div className={styles.newArticle}>
       <Header title={"New article"}/>
       <div className={styles.inputWrapper}>
       <form id="articleForm" onSubmit={submitHandler} className={styles.articleInput}>
-          <p>Enter a new topic, or choose from existing</p>
+          <p>Choose a topic:</p>
           <div className={styles.topicWrapper}>
-            <input type="text" placeholder="Topic" onChange={(e) => setNewTopic(e.target.value)} value={newTopic} />
+            {/* <input type="text" placeholder="Topic" onChange={(e) => setNewTopic(e.target.value)} value={newTopic} /> */}
             <select name="" id="" value={existingTopic} onChange={existingTopicHandler}>
               {topicList.map((topic, index) => {
                 return <option key={index} value={topic.slug}>{topic.slug}</option>

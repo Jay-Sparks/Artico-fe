@@ -1,6 +1,5 @@
 .topicWrapper{
-    padding: 1rem;
-    margin-bottom: 4rem;
+    margin: 1rem 1.5rem 4rem;
 }
 
 .topic{
@@ -37,4 +36,15 @@
 .filters{
     display: flex;
     justify-content: space-between;
+}
+
+.topicSelectWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topicSelect button{
+    padding: 0.5rem 1rem;
+    width: 6.5rem;
 }

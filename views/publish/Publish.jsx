@@ -19,7 +19,6 @@ function Publish() {
         const userArticles = articles.filter((article) => {
           return article.author === loggedInUser.username
         })
-        console.log(userArticles);
         setArticleList(userArticles)
       })
   }, [])

@@ -7,12 +7,14 @@ import UserContext from '../../contexts/User'
 import ErrorPage from '../errorPage/ErrorPage';
 
 import styles from './Home.module.css'
+import Header from '../../components/header/Header';
 
 function Home() {
     const { loggedInUser } = useContext(UserContext)
     const [ orderedArticles , setOrderedArticles ] = useState([])
     const [ topicList, setTopicList ] = useState([])
     const [ error, setError ] = useState(null)
+    const [ isLoading, setIsLoading ] = useState(true)
 
     useEffect(() => {
         getAllArticles("created_at")
@@ -52,6 +54,7 @@ function Home() {
             })
             Promise.all(topicPics).then((topicImageList) => {
                 setTopicList(topicImageList)
+                setIsLoading(false)
             })
             .catch((err) => {
                 setError({ err })
@@ -64,56 +67,50 @@ function Home() {
 
     return (
         <div className={styles.homeWrapper}>
-            <div className={styles.titleWrapper}>
-                <h2>Discover</h2>
-                {loggedInUser.username ?
-                    <div className={styles.userWrapper}>
-                        <p>{`${loggedInUser.username}`}</p>
-                        <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
-                    </div>
+            <Header title={"Discover"}/>
+            { isLoading ? 
+                <p className={styles.isLoading}>fetching articles...</p>
                 :
-                    <Link to={`/account`}>
-                        <button >login</button>
-                    </Link>
-                }
-            </div>
-            <h3>What's new today</h3>
-            <section className={styles.carousel}>
-                <ul className={styles.imageCarousel}>
-                    {orderedArticles.map((article) => {
-                        return (
-                            <li key={article.article_id} className={styles.carouselTile}>
-                                    <Link to={`/articles/${article.article_id}`}>
-                                        <div className={styles.imageContainer}> 
-                                            <img src={article.article_img_url} className={styles.carouselTileImage} />
-                                            <p className={styles.carouselTitle}>{article.title}</p>
-                                            <div className={styles.tileDetails}>
-                                                <img src={article.avatar_url}/>
-                                                <p className={styles.carouselAuthor}>@{article.author}</p>
-                                            </div>
-                                        </div>
+                <>
+                    <h3>What's new today</h3>
+                    <section className={styles.carousel}>
+                        <ul className={styles.imageCarousel}>
+                            {orderedArticles.map((article) => {
+                                return (
+                                    <li key={article.article_id} className={styles.carouselTile}>
+                                            <Link to={`/articles/${article.article_id}`}>
+                                                <div className={styles.imageContainer}> 
+                                                    <img src={article.article_img_url} className={styles.carouselTileImage} />
+                                                    <p className={styles.carouselTitle}>{article.title}</p>
+                                                    <div className={styles.tileDetails}>
+                                                        <img src={article.avatar_url}/>
+                                                        <p className={styles.carouselAuthor}>@{article.author}</p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </section>
+                    <h3>Browse topics</h3>
+                    <section className={styles.topics}>
+                        <ul className={styles.topicWrapper}>
+                            {topicList.map((topic) => {
+                                return (
+                                    <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id}>
+                                        <li  className={styles.topicTile}>
+                                            <img src={topic.article_img_url}/>
+                                            <div className={styles.overlayBackground}></div>
+                                            <p className={styles.overlayText}>{topic.topic}</p>
+                                        </li>
                                     </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </section>
-            <h3>Browse topics</h3>
-            <section className={styles.topics}>
-                <ul className={styles.topicWrapper}>
-                    {topicList.map((topic) => {
-                        return (
-                            <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id}>
-                                <li  className={styles.topicTile}>
-                                    <img src={topic.article_img_url}/>
-                                    <div className={styles.overlayBackground}></div>
-                                    <p className={styles.overlayText}>{topic.topic}</p>
-                                </li>
-                            </Link>
-                        )
-                    })}
-                </ul>
-            </section>
+                                )
+                            })}
+                        </ul>
+                    </section>
+                </>
+            }
         </div>
     )
 }

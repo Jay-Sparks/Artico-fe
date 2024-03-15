@@ -52,11 +52,13 @@ function SingleTopic() {
   return (
     <div className={styles.topicWrapper}>
       <Header title={"Explore"}/>
-      {topicList.map((topic, index) => {
-        return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
-          <button onClick={() => topicHandler(topic.slug)} value={topic.slug}>{topic.slug}</button>
-        </Link>
-      })}
+      <div className={styles.topicSelectWrapper}>
+        {topicList.map((topic, index) => {
+          return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
+            <button onClick={() => topicHandler(topic.slug)} value={topic.slug}>{topic.slug}</button>
+          </Link>
+        })}
+      </div>
       <h3>Results</h3>
       <div className={styles.filters}>
         <select name="sortBy" id="sortBy" onChange={sortByHandler} value={sortedBy}>

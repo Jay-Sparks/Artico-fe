@@ -1,7 +1,5 @@
 import { useContext, useState } from "react"
-
 import UserContext from "../../contexts/User"
-
 import { getUserLogin } from "../../api"
 
 import ErrorPage from '../errorPage/ErrorPage'
@@ -45,9 +43,9 @@ function Account() {
                 <h2>Account</h2>
                 <div className={styles.infoWrapper}>
                   <div className={styles.accountInfo}>
+                    <p>Hi {loggedInUser.name}!</p>
                     <img src={loggedInUser.avatar_url}/>
                     <p>{loggedInUser.username}</p>
-                    <p>{loggedInUser.name}</p>
                   </div>
                   <button onClick={logoutHandler}>logout</button>
                 </div>
