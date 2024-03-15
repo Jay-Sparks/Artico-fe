@@ -60,7 +60,15 @@ function Account() {
                       placeholder="Enter Username"
                       onChange={inputHandler}
                     />
-                    <p>Test user: grumpy19</p>
+                      <div className={styles.testUserWrapper}>
+                        <p>Test users: </p>
+                        <p>grumpy19</p>
+                        <p>tickle122</p>
+                        <p>happyamy2016</p>
+                        <p>jessjelly</p>
+                        <p>coolmessy</p>
+                        <p>weegembump</p>
+                      </div>
                   <button onClick={loginHandler}>login</button>
                   </form>
                 </div>

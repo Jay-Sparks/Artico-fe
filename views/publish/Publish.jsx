@@ -11,6 +11,8 @@ import { Link } from "react-router-dom"
 function Publish() {
   const { loggedInUser } = useContext(UserContext)
   const [ articleList, setArticleList ] = useState([])
+  const [ isLoading, setIsLoading ] = useState(true)
+
 
   useEffect(() => {
     let params = { sortBy: "created_at", order: "asc" }
@@ -19,6 +21,7 @@ function Publish() {
         const userArticles = articles.filter((article) => {
           return article.author === loggedInUser.username
         })
+        setIsLoading(false)
         setArticleList(userArticles)
       })
   }, [])
@@ -26,23 +29,27 @@ function Publish() {
   return (
     <div className={styles.publishWrapper}>
       <Header title={"Publish"}/>
-      {loggedInUser.username ? 
+      {loggedInUser.username ?
         <>
           <h3>My articles</h3>
-          <div className={styles.articleListWrapper}>
-            {articleList.map((article) => {
-              return <MiniArticle key={article.article_id} article={article} />
-            })}
-          </div>
-          <div className={styles.newArticle}>
-            <Link to={"/publish/new"}>
-              <button>write new article</button>
-            </Link>
-          </div>
-        </>
-        :
+          { isLoading ? 
+            <p className={styles.isLoading}>fetching articles...</p>
+            :
+            <div className={styles.articleListWrapper}>
+              {articleList.map((article) => {
+                return <MiniArticle key={article.article_id} article={article} />
+              })}
+            </div>
+            }
+            <div className={styles.newArticle}>
+              <Link to={"/publish/new"}>
+                <button>write new article</button>
+              </Link>
+            </div>
+          </>
+          :
           <p className={styles.notLoggedIn}>Login to publish your own articles</p>
-      }
+        }
     </div>
   )
 }

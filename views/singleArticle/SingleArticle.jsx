@@ -24,6 +24,7 @@ function SingleArticle() {
   const [ newComment, setNewComment ] = useState("")
   const [ showDeleteModal, setShowDeleteModal ] = useState(false)
   const [ deleteComment, setDeleteComment ] = useState(0)
+  const [ isLoading, setIsLoading ] = useState(true)
 
   useEffect(() => {
     getArticleById(article_id)
@@ -48,11 +49,10 @@ function SingleArticle() {
               })
               return commentCopy
             })
+            setIsLoading(false)
             setArticleComments(mappedComments)
           })
       })
-      
-    
   }, [])
 
   const upVoteHandler = () => {
@@ -111,67 +111,73 @@ function SingleArticle() {
     <>
       <div className={styles.articleWrapper}>
         <Header title={"Artico"}/>
-        <div className={styles.flexWrapper}>
-          <p>{article.topic}</p>
-          <p>{moment(article.created_at).format('L')}</p>
-        </div>
-        <h2 className={styles.articleTitle}>{article.title}</h2>
-        <div className={styles.flexWrapper}>
-          <p>by {article.author}</p>
-          {article.votes > 0 ? 
-            <p><span className={styles.positive}>+</span>{article.votes} </p>
-            : 
-            <p>{article.votes}</p>
-          }
-        </div>
-        <img className={styles.articleImg} src={article.article_img_url} />
-        <div className={styles.votingWrapper}>
-          <button className={styles.downButton} onClick={downVoteHandler}>-</button>
-          <button onClick={viewCommentsHandler}>
-            {viewComments ? 
-                <img src={articleIcon} className={styles.commentLogo} />
-              :
-                <>
-                  <img src={commentIcon} className={styles.commentLogo} />
-                  <div className={styles.commentCount}>{article.comment_count}</div>
-                </>
+        { isLoading ? 
+            <p className={styles.isLoading}>fetching articles...</p>
+            :
+            <>
+          <div className={styles.flexWrapper}>
+            <p>{article.topic}</p>
+            <p>{moment(article.created_at).format('L')}</p>
+          </div>
+          <h2 className={styles.articleTitle}>{article.title}</h2>
+          <div className={styles.flexWrapper}>
+            <p>by {article.author}</p>
+            {article.votes > 0 ? 
+              <p><span className={styles.positive}>+</span>{article.votes} </p>
+              : 
+              <p>{article.votes}</p>
             }
-          </button>
-          <button className={styles.upButton} onClick={upVoteHandler}>+</button>
-        </div>
-        <section className={styles.commentSection}>
-          { viewComments ? 
-            <form onSubmit={submitCommentHandler} value="" className={styles.commentInput}>
-              <textarea value={newComment} type="text" placeholder="Add a comment..." onChange={newCommentHandler}></textarea>
-              <button>post</button>
-            </form>
-            : null
-          }
-          { viewComments ?
-              (
-                articleComments.map((comment) => {
-                  return  <Comment 
-                            key={comment.comment_id} 
-                            comment={comment} 
-                            setArticleComments={setArticleComments} 
-                            setArticle={setArticle} 
-                            setShowDeleteModal={setShowDeleteModal}
-                            setDeleteComment={setDeleteComment}
-                          />
-                })
-              )
-              :
-              <p className={styles.articleBody}>{article.body}</p>
-          }
-        </section>
-        { showDeleteModal ? 
-          <DeleteModal 
-            setShowDeleteModal={setShowDeleteModal} 
-            setArticleComments={setArticleComments}
-            setArticle={setArticle}
-            comment={deleteComment}
-          /> 
-        : null}
+          </div>
+          <img className={styles.articleImg} src={article.article_img_url} />
+          <div className={styles.votingWrapper}>
+            <button className={styles.downButton} onClick={downVoteHandler}>-</button>
+            <button onClick={viewCommentsHandler}>
+              {viewComments ? 
+                  <img src={articleIcon} className={styles.articleLogo} />
+                :
+                  <>
+                    <img src={commentIcon} className={styles.commentLogo} />
+                    <div className={styles.commentCount}>{article.comment_count}</div>
+                  </>
+              }
+            </button>
+            <button className={styles.upButton} onClick={upVoteHandler}>+</button>
+          </div>
+          <section className={styles.commentSection}>
+            { viewComments ? 
+              <form onSubmit={submitCommentHandler} value="" className={styles.commentInput}>
+                <textarea value={newComment} type="text" placeholder="Add a comment..." onChange={newCommentHandler}></textarea>
+                <button>post</button>
+              </form>
+              : null
+            }
+            { viewComments ?
+                (
+                  articleComments.map((comment) => {
+                    return  <Comment 
+                              key={comment.comment_id} 
+                              comment={comment} 
+                              setArticleComments={setArticleComments} 
+                              setArticle={setArticle} 
+                              setShowDeleteModal={setShowDeleteModal}
+                              setDeleteComment={setDeleteComment}
+                            />
+                  })
+                )
+                :
+                <p className={styles.articleBody}>{article.body}</p>
+            }
+          </section>
+          { showDeleteModal ? 
+            <DeleteModal 
+              setShowDeleteModal={setShowDeleteModal} 
+              setArticleComments={setArticleComments}
+              setArticle={setArticle}
+              comment={deleteComment}
+            /> 
+          : null}
+            </>
+        }
       </div>
     </>
   )
