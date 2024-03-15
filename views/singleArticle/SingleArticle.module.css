@@ -4,7 +4,7 @@
 
 .articleTitle{
     font-size: 1.8rem;
-    margin: 0 0 1rem;
+    margin: 0.8rem 0;
 }
 
 .flexWrapper{
@@ -61,11 +61,11 @@
 }
 
 .downButton{
-    border-right: 0.5px solid grey;
+    border-right: 0.4px solid grey;
 }
 
 .upButton{
-    border-left: 0.5px solid grey;
+    border-left: 0.4px solid grey;
 }
 
 .articleBody{

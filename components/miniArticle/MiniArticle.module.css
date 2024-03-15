@@ -1,0 +1,122 @@
+
+
+
+.articleTile{
+    /* box-shadow: 1px 1px 8px grey; */
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0.7rem 0;
+    padding: 0.4rem;
+}
+
+.articleTile h4{
+    font-size: 1rem;
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    text-align: left;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    line-height: 1.2rem;
+}
+
+.articleTile h5{
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    text-align: left;
+}
+
+
+.articleTile img{
+    height: 6rem;
+
+    border-radius: 8px;
+}
+
+.articleTitle{
+    display: flex;
+    align-items: center;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
+
+.articleInfo{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 100%;
+}
+
+.articleInfo p{
+    margin: 0.25rem 1rem 1rem;
+}
+
+.date{
+    font-size: smaller;
+    margin: 0;
+}
+
+.authorDetails{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0.5rem 0 1rem;
+}
+
+.authorName{
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+}
+
+.authorName p{
+    margin: 0 0 0.5rem;
+}
+
+.optionsWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editButton{
+    background-color: white;
+    box-shadow: none;
+    padding: 0.5rem 0.5rem;
+}
+
+.deleteButton{
+    background-color: white;
+    box-shadow: none;
+    padding: 0.5rem 0.55rem;
+}
+
+.viewButton{
+    background-color: white;
+    box-shadow: none;
+    padding: 0.5rem 0.5rem;
+}
+
+.editButton img{
+    height: 1.5rem;
+}
+
+.deleteButton img{
+    height: 1.4rem;
+}
+
+.viewButton img{
+    height: 1.4rem;
+}
+
+.colFlex{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

@@ -137,3 +137,14 @@ export const deleteComment = (commentId) => {
             console.log(err);
         })
 }
+
+export const postNewArticle = (newArticle) => {
+    return articoApi
+        .post(`/articles`, newArticle)
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}

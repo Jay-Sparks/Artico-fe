@@ -23,11 +23,17 @@ function Explore() {
       setArticleList(response.articles)
     })
 
+  }, [orderBy, sortedBy])
+
+  useEffect(() => {
+
     getTopics().then((response) => {
       setTopicList(response.topics)
     })
 
-  }, [orderBy, sortedBy])
+  }, [])
+
+
   
   const sortByHandler = (e) => {
     setSortedBy(e.target.value)
@@ -57,7 +63,7 @@ function Explore() {
           <button>{topic.slug}</button>
         </Link>
       })}
-      <h3>RESULTS</h3>
+      <h3>Results</h3>
       <div className={styles.filters}>
         <select name="sortBy" id="sortBy" onChange={sortByHandler} value={sortedBy}>
           <option value="created_at">date</option>

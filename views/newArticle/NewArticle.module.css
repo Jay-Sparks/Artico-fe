@@ -1,0 +1,49 @@
+.newArticle{
+    padding: 1rem;
+}
+
+.inputWrapper{
+    padding: 0 0.8rem;
+}
+
+.articleInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.articleInput input{
+    margin: 1rem 0;
+    padding: 0.5rem;
+}
+
+.imgInput{
+    width: 60%;
+}
+
+.articleInput img{
+    height: 12rem;
+}
+
+.articleInput textarea{
+    padding: 2rem 0.5rem;
+    resize: none;
+    height: 1.5rem;
+    margin: 1rem 0;
+}
+
+.publishButton{
+    padding: 1rem;
+}
+
+.topicWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addButton{
+    font-size: 0.7rem;
+    padding: 0.7rem 1rem;
+}
