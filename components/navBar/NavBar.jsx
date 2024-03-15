@@ -7,16 +7,16 @@ function NavBar() {
   return (
     <nav className={styles.navBar}>
       <Link to="/" className={styles.link}>
-        <img src="/assets/Home.svg" />
+        <img src="../src/assets/Home.svg" />
       </Link>
       <Link to="/explore" className={styles.link}>
-        <img src="/assets/Explore.svg" />
+        <img src="../src/assets/Explore.svg" />
       </Link>
       <Link to="/publish" className={styles.linkPublish}>
-        <img src="/assets/openBookPen.svg" />
+        <img src="../src/assets/openBookPen.svg" />
       </Link>
       <Link to="/account" className={styles.link}>
-        <img src="/assets/Account.svg" />
+        <img src="../src/assets/Account.svg" />
       </Link>
     </nav>
   )
