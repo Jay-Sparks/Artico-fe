@@ -4,6 +4,10 @@ import styles from './MiniArticle.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
+import editIcon from "../../src/assets/editButton.svg"
+import deleteIcon from "../../src/assets/delete.svg"
+import viewIcon from "../../src/assets/view.svg"
+
 function MiniArticle({article}) {
 
   const [ viewFullCard, setViewFullCard ] = useState(false)
@@ -38,14 +42,14 @@ function MiniArticle({article}) {
               </div>
               <div className={styles.authorDetails}>
                   <button className={styles.editButton}>
-                      <img src="../../assets/editButton.svg" />
+                      <img src={editIcon} />
                   </button>
                   <button className={styles.deleteButton}>
-                      <img src="../../assets/delete.svg" />
+                      <img src={deleteIcon} />
                   </button>
                   <Link to={`/articles/${article.article_id}`}>
                     <button className={styles.viewButton} >
-                        <img src="../../assets/view.svg" />
+                        <img src={viewIcon} />
                     </button>
                   </Link>
               </div>

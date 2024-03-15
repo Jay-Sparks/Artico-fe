@@ -12,6 +12,9 @@ import Comment from "../../components/comment/Comment"
 import DeleteModal from "../../components/deleteModal/DeleteModal.jsx"
 import Header from "../../components/header/Header.jsx"
 
+import articleIcon from "../../src/assets/article.svg"
+import commentIcon from "../../src/assets/commentBubble.svg"
+
 function SingleArticle() {
   const { loggedInUser } = useContext(UserContext)
   const { article_id } = useParams()
@@ -126,10 +129,10 @@ function SingleArticle() {
           <button className={styles.downButton} onClick={downVoteHandler}>-</button>
           <button onClick={viewCommentsHandler}>
             {viewComments ? 
-                <img src="../src/assets/article.svg" className={styles.commentLogo} />
+                <img src={articleIcon} className={styles.commentLogo} />
               :
                 <>
-                  <img src="../src/assets/commentBubble.svg" className={styles.commentLogo} />
+                  <img src={commentIcon} className={styles.commentLogo} />
                   <div className={styles.commentCount}>{article.comment_count}</div>
                 </>
             }

@@ -1,9 +1,12 @@
 import { useContext, useState } from 'react';
-
 import UserContext from '../../contexts/User'
 import moment from 'moment'
 
 import styles from './Comment.module.css'
+
+import editIcon from "../../src/assets/editButton.svg"
+import deleteIcon from "../../src/assets/delete.svg"
+
 import { deleteComment, updateCommentVote } from '../../api';
 
 function Comment({ comment, setArticleComments, setArticle, setShowDeleteModal, setDeleteComment }) {
@@ -58,10 +61,10 @@ function Comment({ comment, setArticleComments, setArticle, setShowDeleteModal, 
                             <div className={styles.optionsWrapper}>
                                 <p className={styles.commentDate}>{moment(comment.created_at).format('L')}</p>
                                 <button className={styles.editButton}>
-                                    <img src="../../assets/editButton.svg" />
+                                    <img src={editIcon} />
                                 </button>
                                 <button className={styles.deleteButton} onClick={deleteHandler}>
-                                    <img src="../../assets/delete.svg" />
+                                    <img src={deleteIcon} />
                                 </button>
                             </div>
                             :
