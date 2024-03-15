@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import homeImage from '../src/assets/Home.svg'
+import homeImage from '../../src/assets/Home.svg'
 
 import styles from './NavBar.module.css'
 
