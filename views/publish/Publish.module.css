@@ -1,3 +1,24 @@
 .publishWrapper{
     margin: 1rem;
 }
+
+.articleListWrapper{
+    overflow-y: auto;
+    height: 60vh;
+}
+
+.newArticle{
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.newArticle button{
+    padding: 1rem 6rem;
+    font-weight: bolder;
+}
+
+.notLoggedIn{
+    margin: 10rem auto;
+    text-align: center;
+}

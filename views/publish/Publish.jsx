@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { getAllArticles } from "../../api"
 import UserContext from "../../contexts/User"
 
-import ArticleTile from '../../components/articleTile/ArticleTile'
+import MiniArticle from '../../components/miniArticle/MiniArticle'
 
 import styles from './Publish.module.css'
+import Header from "../../components/header/Header"
+import { Link } from "react-router-dom"
 
 function Publish() {
   const { loggedInUser } = useContext(UserContext)
@@ -24,10 +26,24 @@ function Publish() {
 
   return (
     <div className={styles.publishWrapper}>
-      <h2>My articles</h2>
-      {articleList.map((article) => {
-        return <ArticleTile key={article.article_id} article={article} />
-      })}
+      <Header title={"Publish"}/>
+      {loggedInUser.username ? 
+        <>
+          <h3>My articles</h3>
+          <div className={styles.articleListWrapper}>
+            {articleList.map((article) => {
+              return <MiniArticle key={article.article_id} article={article} />
+            })}
+          </div>
+          <div className={styles.newArticle}>
+            <Link to={"/publish/new"}>
+              <button>write new article</button>
+            </Link>
+          </div>
+        </>
+        :
+          <p className={styles.notLoggedIn}>Login to publish your own articles</p>
+      }
     </div>
   )
 }

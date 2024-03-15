@@ -10,6 +10,7 @@ import styles from './SingleArticle.module.css'
 
 import Comment from "../../components/comment/Comment"
 import DeleteModal from "../../components/deleteModal/DeleteModal.jsx"
+import Header from "../../components/header/Header.jsx"
 
 function SingleArticle() {
   const { loggedInUser } = useContext(UserContext)
@@ -106,6 +107,7 @@ function SingleArticle() {
   return (
     <>
       <div className={styles.articleWrapper}>
+        <Header title={"Artico"}/>
         <div className={styles.flexWrapper}>
           <p>{article.topic}</p>
           <p>{moment(article.created_at).format('L')}</p>

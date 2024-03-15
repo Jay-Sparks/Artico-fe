@@ -12,6 +12,7 @@ import NavBar from '../components/navBar/NavBar'
 import SingleArticle from '../views/singleArticle/SingleArticle'
 import SingleTopic from '../views/singleTopic/SingleTopic'
 import ErrorPage from '../views/errorPage/ErrorPage'
+import NewArticle from '../views/newArticle/NewArticle'
 
 
 function App() {
@@ -21,11 +22,12 @@ function App() {
     <UserContext.Provider value={{ loggedInUser: loggedInUser, setLoggedInUser: setLoggedInUser}}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/publish" element={<Publish />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/publish/new" element={<NewArticle />} />
         <Route path="/articles" element={<SingleTopic />} />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <NavBar />

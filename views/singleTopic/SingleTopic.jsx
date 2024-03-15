@@ -6,6 +6,7 @@ import { getAllArticles, getTopics } from '../../api';
 
 import ArticleTile from '../../components/articleTile/ArticleTile';
 import UserContext from '../../contexts/User';
+import Header from '../../components/header/Header';
 
 function SingleTopic() {
 
@@ -50,25 +51,13 @@ function SingleTopic() {
 
   return (
     <div className={styles.topicWrapper}>
-      <div className={styles.titleWrapper}>
-        <h2>Explore</h2>
-        {loggedInUser.username ?
-          <div className={styles.userWrapper}>
-              <p>{`${loggedInUser.username}`}</p>
-              <img src={loggedInUser.avatar_url} className={styles.userAvatar}/>
-          </div>
-        :
-          <Link to={`/account`}>
-              <button>login</button>
-          </Link>
-        }
-      </div>
+      <Header title={"Explore"}/>
       {topicList.map((topic, index) => {
         return <Link key={index} to={`/articles?topic=${topic.slug}`} className={styles.topicSelect}>
           <button onClick={() => topicHandler(topic.slug)} value={topic.slug}>{topic.slug}</button>
         </Link>
       })}
-      <h3>RESULTS</h3>
+      <h3>Results</h3>
       <div className={styles.filters}>
         <select name="sortBy" id="sortBy" onChange={sortByHandler} value={sortedBy}>
           <option className="option" value="created_at">date</option>
