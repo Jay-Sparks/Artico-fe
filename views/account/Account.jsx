@@ -61,7 +61,7 @@ function Account() {
                       onChange={inputHandler}
                     />
                       <div className={styles.testUserWrapper}>
-                        <p>Test users: </p>
+                        <h3>Login using a test user below: </h3>
                         <p>grumpy19</p>
                         <p>tickle122</p>
                         <p>happyamy2016</p>
