@@ -30,29 +30,30 @@ function SingleArticle() {
     getArticleById(article_id)
       .then((response) => {
         setArticle(response.article)
-      })
-
-    getArticleComments(article_id)
-      .then((response) => {
-        const comments = response.comments
-        return comments
-      })
-      .then((comments) => {
-        getAllUsers()
-          .then(({users}) => {
-            const mappedComments = comments.map((comment) => {
-              let commentCopy = {...comment}
-              users.forEach((user) =>{
-                if(user.username === comment.author) {
-                  commentCopy = {...commentCopy, avatar_url: user.avatar_url}
-                }
-              })
-              return commentCopy
+        if(response.article.comment_count !== 0) {
+          getArticleComments(article_id)
+            .then((response) => {
+              const comments = response.comments
+              return comments
             })
-            setIsLoading(false)
-            setArticleComments(mappedComments)
+            .then((comments) => {
+              getAllUsers()
+                .then(({users}) => {
+                  const mappedComments = comments.map((comment) => {
+                    let commentCopy = {...comment}
+                    users.forEach((user) =>{
+                      if(user.username === comment.author) {
+                        commentCopy = {...commentCopy, avatar_url: user.avatar_url}
+                      }
+                    })
+                    return commentCopy
+                  })
+                  setArticleComments(mappedComments)
+                })
+              })
+            }
           })
-      })
+          setIsLoading(false)
   }, [])
 
   const upVoteHandler = () => {
