@@ -50,7 +50,7 @@
     flex-shrink: 0;
     scroll-snap-align: start;
     height: 48vh;
-    width: 99%;
+    width: 20rem;
     margin: 0 0.5rem;
     transform-origin: center center;
     transform: scale(1);
@@ -163,8 +163,44 @@
 }
 
 
-
 .isLoading{
     text-align: center;
     margin: 30vh 0;
+}
+
+@media only screen and (min-width: 768px){
+    .homeWrapper{
+        margin: 3rem 10rem 0;
+    }
+    .topics{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .topicWrapper{
+        display: flex;
+        flex-wrap: wrap;
+        /* margin: 1rem; */
+        width: 100%;
+        justify-content:space-between;
+    }
+    .topicTile{
+        width: 22rem;
+        height: 10rem;
+    }
+    .topicTile img{
+        width: 100%;
+        height: 100%;
+    }
+    .overlayText{
+        top: 4rem; 
+        left: 11rem; 
+    }
+    .overlayBackground{
+        top: 3.25rem; 
+        left: 6rem;
+        padding: 2rem 5rem;
+    }
+    .homeWrapper h3{
+        margin: 0;
+    }
 }

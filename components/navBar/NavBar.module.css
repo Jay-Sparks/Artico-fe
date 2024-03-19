@@ -50,3 +50,17 @@
   box-shadow: inset 2px 2px 5px black;
   background-color: rgb(251, 99, 11);
 }
+
+@media only screen and (min-width: 768px){
+    .navBar{
+      top: 0;
+      height: 3rem;
+      box-shadow: 1px 2px 5px grey;
+    }
+    .link{
+      padding: 0.5rem 3rem;
+    }
+    .linkPublish{
+      padding: 0.5rem 3rem;
+    }
+}

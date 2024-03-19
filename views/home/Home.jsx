@@ -98,7 +98,7 @@ function Home() {
                         <ul className={styles.topicWrapper}>
                             {topicList.map((topic) => {
                                 return (
-                                    <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id}>
+                                    <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id} className={styles.topicLink}>
                                         <li  className={styles.topicTile}>
                                             <img src={topic.article_img_url}/>
                                             <div className={styles.overlayBackground}></div>
