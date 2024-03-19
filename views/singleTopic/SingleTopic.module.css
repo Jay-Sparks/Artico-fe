@@ -54,3 +54,23 @@
     text-align: center;
     margin: 30vh 0;
 }
+
+
+@media only screen and (min-width: 768px){
+    .topicWrapper{
+        margin: 3rem 10rem 0;
+    }
+    .articleWrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    select{
+        width: 45%;
+    }
+    .topicSelect button{
+        padding: 0.5rem 6rem;
+        width: unset;
+    }
+}

@@ -61,3 +61,19 @@
     margin: 0.2rem;
     text-align: left;
 }
+
+@media only screen and (min-width: 768px){
+    .accountView{
+        margin: 3rem 10rem 0;
+        padding: 0;
+    }
+    .accountView h2{
+        margin: 6rem 0;
+    }
+    .accountInfo{
+        padding: 0;
+    }
+    .userLogin{
+        width: 18rem;
+    }
+}

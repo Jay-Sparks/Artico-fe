@@ -7,7 +7,13 @@ function ArticleTile({article}) {
   return (
     <li className={styles.articleTile}>
       <div className={styles.articleInfo}>
-        <h4>{article.title}</h4>
+        <h4>
+          {article.title.length > 25 ? 
+            article.title.substring(0, 40) + "..." 
+            : 
+            article.title
+          }
+        </h4>
         <p className={styles.topic}>{article.topic}</p>
         <Link to={`/articles/${article.article_id}`}>
             <img src={article.article_img_url}/>
