@@ -32,6 +32,7 @@
 
 .articleTile img{
     width: 100%;
+    /* height: 100%; */
 }
 
 .articleTitle{
@@ -80,9 +81,6 @@
 @media only screen and (min-width: 768px){
     .articleTile{
         width: 16rem;
-    }
-    .articleInfo{
-
     }
     .articleTile img{
         height: 10rem;
