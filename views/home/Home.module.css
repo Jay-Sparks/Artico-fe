@@ -49,9 +49,9 @@
     flex-direction: column;
     flex-shrink: 0;
     scroll-snap-align: start;
-    height: 48vh;
+    /* height: 48vh; */
     width: 20rem;
-    margin: 0 0.5rem;
+    margin: 4rem 0.5rem;
     transform-origin: center center;
     transform: scale(1);
     transition: transform 0.5s;
@@ -63,12 +63,14 @@
     justify-content: space-around;
     box-shadow: 2px 2px 8px grey;
     /* width: 90vw; */
-    height: 40vh;
+    /* height: 24rem; */
     /* overflow: hidden; */
 }
 
 .imageContainer img{
     overflow: hidden;
+    /* width: 100%; */
+    height: 16rem
 }
 
 .tileDetails{
@@ -109,29 +111,14 @@
 }
 
 .overlayText {
-    position: absolute;
-    top: 6rem; 
-    left: 10rem; 
-    transform: translate(-50%, -50%); 
-    color: white; 
     font-size: 1.2rem;
     line-height: 1.2rem;
     font-weight: bolder;
     text-align: left;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    z-index: 3;
-}
-
-.overlayBackground{
-    position: absolute;
-    top: 4.5rem; 
-    left: 5rem;
-    padding: 3rem 5rem;
-    background-color: black;
-    opacity: 65%;
-    z-index: 2;
+    margin: 1rem;
+    /* margin-block-start: 1em;
+    margin-block-end: 1em; */
+    /* z-index: 3; */
 }
 
 .topics{
@@ -159,7 +146,11 @@
     transition: transform 0.5s;
     position: relative;
     margin: 1.5rem auto;
-    box-shadow: 2px 2px 6px grey;
+    box-shadow: 1px 1px 10px grey;
+}
+
+.introduction{
+    margin: 4rem 0;
 }
 
 
@@ -181,23 +172,23 @@
         flex-wrap: wrap;
         /* margin: 1rem; */
         width: 100%;
-        justify-content:space-between;
+        justify-content: space-around;
     }
     .topicTile{
-        width: 22rem;
-        height: 10rem;
+        width: 30rem;
+        height: 22rem;
     }
     .topicTile img{
         width: 100%;
         height: 100%;
     }
     .overlayText{
-        top: 4rem; 
-        left: 11rem; 
+        top: 9rem; 
+        left: 17rem; 
     }
     .overlayBackground{
-        top: 3.25rem; 
-        left: 6rem;
+        top: 8.25rem; 
+        left: 12rem;
         padding: 2rem 5rem;
     }
     .homeWrapper h3{

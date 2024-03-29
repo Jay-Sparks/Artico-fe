@@ -67,7 +67,12 @@ function Home() {
 
     return (
         <div className={styles.homeWrapper}>
-            <Header title={"Discover"}/>
+            <Header title={"Artico"}/>
+            <div className={styles.introduction}>
+                <h3>Artico is a full-stack portfolio website built by <a href='https://jay-sparks.netlify.app/'>@Jay-Sparks</a></h3>
+                <p>Built using: Vite, , React, React-router-dom, Axios, Express, PostGres & Jest</p>
+            </div>
+            
             { isLoading ? 
                 <p className={styles.isLoading}>fetching articles...</p>
                 :
@@ -100,9 +105,9 @@ function Home() {
                                 return (
                                     <Link to={`/articles?topic=${topic.topic}`} key={topic.article_id} className={styles.topicLink}>
                                         <li  className={styles.topicTile}>
-                                            <img src={topic.article_img_url}/>
-                                            <div className={styles.overlayBackground}></div>
                                             <p className={styles.overlayText}>{topic.topic}</p>
+                                            <img src={topic.article_img_url}/>
+                                            {/* <div className={styles.overlayBackground}></div> */}
                                         </li>
                                     </Link>
                                 )

@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     border-top: 0.5px solid grey;
+    justify-content: space-evenly;
 }
 
 .commentWrapper img{
@@ -83,4 +84,14 @@
 
 .deleteButton img{
     height: 1.1rem;
+}
+
+@media only screen and (min-width: 768px){
+    .commentWrapper{
+        justify-content: space-evenly;
+    }
+    .commentBody{
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
 }
