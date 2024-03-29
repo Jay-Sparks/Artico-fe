@@ -3,6 +3,7 @@ import { getAllArticles } from "../../api"
 import UserContext from "../../contexts/User"
 
 import MiniArticle from '../../components/miniArticle/MiniArticle'
+import DeleteModalArticle from '../../components/deleteModalArticle/DeleteModalArticle'
 
 import styles from './Publish.module.css'
 import Header from "../../components/header/Header"
@@ -12,7 +13,8 @@ function Publish() {
   const { loggedInUser } = useContext(UserContext)
   const [ articleList, setArticleList ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
-
+  const [ showDeleteModal, setShowDeleteModal ] = useState(false)
+  const [ deleteArticle, setDeleteArticle ] = useState(0)
 
   useEffect(() => {
     let params = { sortBy: "created_at", order: "asc" }
@@ -31,13 +33,24 @@ function Publish() {
       <Header title={"Publish"}/>
       {loggedInUser.username ?
         <>
+          { showDeleteModal ? 
+          <DeleteModalArticle 
+            setArticleList={setArticleList} 
+            articleId={deleteArticle.article_id} 
+            setShowDeleteModal={setShowDeleteModal} 
+          /> : null }
           <h3>My articles</h3>
           { isLoading ? 
             <p className={styles.isLoading}>fetching articles...</p>
             :
             <div className={styles.articleListWrapper}>
               {articleList.map((article) => {
-                return <MiniArticle key={article.article_id} article={article} />
+                return <MiniArticle 
+                  key={article.article_id} 
+                  article={article} 
+                  setShowDeleteModal={setShowDeleteModal} 
+                  setDeleteArticle={setDeleteArticle} 
+                />
               })}
             </div>
             }

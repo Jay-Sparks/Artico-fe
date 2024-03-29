@@ -8,13 +8,13 @@ import editIcon from "../../src/assets/editButton.svg"
 import deleteIcon from "../../src/assets/delete.svg"
 import viewIcon from "../../src/assets/view.svg"
 
-function MiniArticle({article}) {
+function MiniArticle({article, setShowDeleteModal, setDeleteArticle}) {
 
   const [ viewFullCard, setViewFullCard ] = useState(false)
 
   const deleteHandler = () => {
     setShowDeleteModal(true)
-    setDeleteComment(comment)
+    setDeleteArticle(article)
   }
 
   const viewFullHandler = () => {
@@ -44,7 +44,7 @@ function MiniArticle({article}) {
                   <button className={styles.editButton}>
                       <img src={editIcon} />
                   </button>
-                  <button className={styles.deleteButton}>
+                  <button className={styles.deleteButton} onClick={deleteHandler}>
                       <img src={deleteIcon} />
                   </button>
                   <Link to={`/articles/${article.article_id}`}>

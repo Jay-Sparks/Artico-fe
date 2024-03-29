@@ -148,3 +148,14 @@ export const postNewArticle = (newArticle) => {
             console.log(err);
         })
 }
+
+export const deleteArticle = (articleId) => {
+    return articoApi
+        .delete(`/articles/${articleId}`)
+        .then((response) => {
+            return response.data
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}

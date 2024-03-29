@@ -70,7 +70,7 @@ function Home() {
             <Header title={"Artico"}/>
             <div className={styles.introduction}>
                 <h3>Artico is a full-stack portfolio website built by <a href='https://jay-sparks.netlify.app/'>@Jay-Sparks</a></h3>
-                <p>Built using: Vite, , React, React-router-dom, Axios, Express, PostGres & Jest</p>
+                <p>using: Vite, , React, React-router-dom, Axios, Express, PostGres & Jest</p>
             </div>
             
             { isLoading ? 
